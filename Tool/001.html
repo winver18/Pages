@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网络延迟测试 | 爱玩电脑的winver的小破站</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding-top: 50px;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333; /* 标题颜色加深 */
+            font-size: 2.5em; /* 标题字号加大 */
+        }
+        #速度 {
+            margin-top: 30px;
+            font-size: 2em;
+            color: #5c67f2;
+        }
+        p {
+            font-size: 1em;
+            line-height: 1.6;
+            color: #666;
+        }
+        a {
+            color: #5c67f2;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        input[type="text"] {
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            width: 70%;
+            box-sizing: border-box; /* 使宽度包含padding和border */
+        }
+        input[type="button"] {
+            padding: 15px 30px;
+            background-color: #5c67f2;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 1em; /* 按钮字号统一 */
+        }
+        input[type="button"]:hover {
+            background-color: #4a54e1;
+        }
+        .instructions {
+            margin-top: 20px;
+            font-size: 1em;
+            color: #555;
+        }
+        .instructions ol {
+            list-style-position: inside; /* 列表符号内置 */
+            padding-left: 0; /* 去除默认的padding */
+        }
+        .instructions li {
+            margin-bottom: 10px; /* 列表项间距 */
+        }
+        .footer {
+            margin-top: 40px;
+            font-size: 0.9em;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>网络速度测试页面</h1>
+    <input type="text" id="testUrl" placeholder="输入要测试的URL">
+    <input type="button" value="测试延迟" onclick="measure速度()">
+    <p id="速度">网络速度： 0秒</p>
+    <div class="instructions">
+        <strong>使用说明：</strong>
+        <ol>
+            <li>在上方的输入框中输入您想要测试的网站URL，最好是图片URL。</li>
+            <li>点击“测试延迟”按钮。</li>
+            <li>工具将显示延迟时间（以毫秒为单位），或者指示连接失败。</li>
+        </ol>
+    </div>
+    <div class="footer" id="footer" style="display:none;">
+        <a href="https://www.retiehe.com/" target="_blank" class="button-link">&copy; 2022-2025 曾楚乔 BEIBING 版权所有，保留所有权利</a>
+    </div> 
+</div>
+
+<script>
+    function measure=() {
+        var url = document.getElementById('testUrl').value;
+        if (!url) {
+            alert('请输入一个URL。');
+            return;
+        }
+        var start = new Date(); // 测试开始时间
+        var xhr = new XMLHttpRequest(); // 创建XMLHttpRequest对象
+        xhr.open('GET', url, true); // 打开一个GET请求
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) { // 当请求完成时
+                var end = new Date(); // 测试结束时间
+                var timeDiff = end - start; // 计算时间差
+                document.getElementById('速度').innerText = '网络速度： ' + (timeDiff / 1000).toFixed(3) + '秒';
+            }
+        };
+        xhr.send(); // 发送请求
+    }
+	// 监听页面卸载事件
+        window.addEventListener('beforeunload', function() {
+            document.title = '(～￣▽￣)～ 欢迎下次光临';
+        });
+        // 监听页面可见性变化事件
+        document.addEventListener('visibilitychange', function() {
+            if (document.visibilityState === 'hidden') {
+                document.title = '(＃°Д°) 唉，再看看嘛';
+            } else if (document.visibilityState === 'visible') {
+                document.title = 'ヾ(≧▽≦*)o 欢迎回来';
+                setTimeout(function() {
+                    document.title = '网络延迟测试 | 爱玩电脑的winver的小破站'; // 最后恢复默认标题
+                }, 3000); // 3秒后恢复默认标题
+            }
+        });
+</script>
+
+</body>
+</html>
