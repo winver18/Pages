@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>自我介绍 | 爱玩电脑的winver的小破站</title>
+	<style>
+		body, html {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			font-family: 'Lato', 'Arial', sans-serif;
+			background: #f4f4f4; /* 页面背景色 */
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.container {
+			width: 90%;
+			max-width: 800px;
+			padding: 20px;
+			background: white; /* 容器背景色 */
+			border-radius: 12px; /* 容器圆角 */
+			box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+			margin-top: 50px; /* 顶部边距 */
+			transition: transform 0.3s ease-in-out;
+		}
+
+		.container:hover {
+			transform: translateY(-5px); /* 鼠标悬停时轻微上移 */
+		}
+
+		.footer {
+			padding: 20px;
+			background: white; /* 与容器背景色一致 */
+			text-align: center;
+			color: #333;
+			width: 100%;
+			font-size: 0.8em;
+			margin-top: 20px; /* 与容器保持一定距离 */
+			border-radius: 12px; /* 页脚四个角都是圆角 */
+			box-shadow: 0 -5px 15px rgba(0,0,0,0.1); /* 页脚阴影 */
+		}
+
+		.footer p {
+			margin: 0;
+		}
+
+		#time {
+			text-align: center;
+			margin-top: 20px;
+			font-size: 1em;
+			color: #333;
+		}
+
+		a {
+			color: #333; /* 链接文字颜色为黑色 */
+			text-decoration: none;
+			transition: color 0.3s; /* 平滑的颜色过渡 */
+		}
+
+		a:hover {
+			color: orange; /* 鼠标悬停时文字颜色为橙色 */
+			text-decoration: underline;
+		}
+
+		.logo {
+			width: 30px; /* 根据实际图标大小调整 */
+			height: auto;
+			margin-right: 10px;
+			vertical-align: middle;
+		}
+
+		h1, h2 {
+			color: #333; /* 标题颜色 */
+			font-weight: 300;
+		}
+
+		ul, ol {
+			padding-left: 20px;
+		}
+
+		li {
+			margin-bottom: 10px;
+		}
+
+		p {
+			margin-bottom: 20px; /* 文章和按钮之间的空间 */
+			color: #666; /* 较深的文本颜色 */
+			line-height: 1.6; /* 行高 */
+			font-size: 1em; /* 字体大小 */
+		}
+
+		.button-link {
+			display: inline-block;
+			padding: 10px 20px;
+			margin-top: 15px; /* 按钮顶部的空间 */
+			border: none;
+			border-radius: 6px;
+			background-image: linear-gradient(to right, #667eea, #764ba2);
+			color: white;
+			font-size: 1em;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+			text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+		}
+
+		.button-link:hover {
+			background-image: linear-gradient(to right, #764ba2, #667eea);
+			transform: scale(1.05);
+			box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+		}
+
+		.button-link:active {
+			transform: scale(0.95);
+		}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>自我介绍</h1>
+		<h2>我似乎从来没有做过自我介绍</h2>
+        <p>我是爱玩电脑的winver，12周岁，精通Python，C++，HTML，好友爱捡数码垃圾的小张。</p>
+		
+        <div>
+            <a href="https://space.bilibili.com/1808002444" target="_blank" class="button-link">
+                <img src="https://www.bilibili.com/favicon.ico" alt="哔哩哔哩LOGO" class="logo">
+                我的哔哩哔哩主页
+            </a>
+        </div>
+        <div>
+    		<a href="/Essay" target="_blank" class="button-link">返回上一级</a>
+        </div>
+        <div id="time">当前时间：<span id="display-time"></span></div>
+    </div>
+    
+    <div class="footer">
+		<a href="https://www.retiehe.com/" target="_blank">&copy; 2022-2025 曾楚乔 BEIBING 版权所有，保留所有权利</a>
+    </div>
+
+    <script>
+        function showTime() {
+            var now = new Date();
+            var hours = now.getHours().toString().padStart(2, '0');
+            var minutes = now.getMinutes().toString().padStart(2, '0');
+            var seconds = now.getSeconds().toString().padStart(2, '0');
+            document.getElementById('display-time').textContent = hours + ':' + minutes + ':' + seconds;
+        }
+        window.onload = showTime;
+        setInterval(showTime, 1000);
+		// 监听页面卸载事件
+        window.addEventListener('beforeunload', function() {
+            document.title = '(～￣▽￣)～ 欢迎下次光临';
+        });
+        // 监听页面可见性变化事件
+        document.addEventListener('visibilitychange', function() {
+            if (document.visibilityState === 'hidden') {
+                document.title = '(＃°Д°) 唉，再看看嘛';
+            } else if (document.visibilityState === 'visible') {
+                document.title = 'ヾ(≧▽≦*)o 欢迎回来';
+                setTimeout(function() {
+                    document.title = '自我介绍 | 爱玩电脑的winver的小破站'; // 最后恢复默认标题
+                }, 3000); // 3秒后恢复默认标题
+            }
+        });
+    </script>
+</body>
+</html>
