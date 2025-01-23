@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引用Cloudflare的验证码JS文件 -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <title>站内工具 | 爱玩电脑的winver的小破站</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #f4f4f4, #cccccc);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow-y: scroll;
+        }
+
+        /* 滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 4px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
+
+        p {
+            font-size: 1em;
+            line-height: 1.6;
+            margin: 20px 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        .footer {
+            margin-top: 40px;
+            background: transparent;
+            color: #333;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.8em;
+            width: 100%;
+        }
+
+        /* 链接样式 */
+        .button-link {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+            cursor: pointer;
+            font-weight: 500; /* 加粗字体 */
+        }
+
+        .button-link:hover, .footer a:hover {
+            color: #e74c3c;
+        }
+
+        .footer a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .time {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        .verification-container {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .verification-prompt {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            p, .footer {
+                font-size: 0.9em;
+            }
+        }
+		 .search-container {
+            display: flex;
+            justify-content: center; /* 使输入框和按钮在一行上并居中 */
+            align-items: center; /* 垂直居中 */
+        }
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin-right: 5px; /* 与按钮之间留有间隔 */
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+        }
+		.footer-bottom {
+			width: 100%;
+			text-align: center;
+			margin-top: 20px;
+			padding: 10px 0;
+			background: #f4f4f4; /* 或者您喜欢的任何颜色 */
+			color: #333;
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+    </style>
+</head>
+<body>
+    <div class="verification-container" id="verification">
+		<p class="verification-prompt">我们怀疑你是机器人，请进行人机验证</p>
+		<!-- Cloudflare验证码容器 -->
+		<div class="cf-turnstile" data-sitekey="0x4AAAAAAA4jv9zKntatRfzt" data-callback="javascriptCallback"></div>
+		<div class="footer-bottom">
+			<p>验证由Cloudflare提供支持</p>
+			<p>站点密钥：0x4AAAAAAA4jv9zKntatRfzt</p>
+		</div>
+	</div>
+    <div class="container" id="home" style="display:none;">
+        <h1>欢迎来到爱玩电脑的winver的站内工具</h1>
+        <p>这个站内工具的创建是为了提供一些网站内部的工具或功能。</p>
+
+        <div class="time" id="time"></div>
+
+        <h2>你可以访问以下工具：</h2>
+        <ul>
+			<div class="search-container">
+    <form action="https://www.bing.com/search" method="get" target="_blank">
+        <input type="text" name="q" placeholder="请输入搜索内容">
+        <input type="submit" value="必应搜索">
+    </form>
+</div>
+            <li>
+                <a href="Tool/001.html" target="_blank" class="button-link">网络延迟测试工具</a>
+            </li>
+			<li>
+                <a href="/" target="_blank" class="button-link">返回主页</a>
+            </li>
+        </ul>
+    </div>
+    <div class="footer" id="footer" style="display:none;">
+        <a href="https://www.retiehe.com/" target="_blank" class="button-link">&copy; 2022-2025 曾楚乔 BEIBING 版权所有，保留所有权利</a>
+    </div> 
+    <script>
+        function showTime() {
+            var date = new Date();
+            var time = date.toLocaleTimeString();
+            document.getElementById("time").textContent = "当前时间：" + time;
+        }
+        showTime();
+        setInterval(showTime, 1000);
+
+        // 获取当前时间
+        const now = new Date().getTime();
+
+        // 从localStorage获取上次验证的时间
+        const lastVerified = localStorage.getItem('lastVerified');
+
+        // 检查是否需要验证
+        if (!lastVerified || (now - lastVerified) > 300000) { // 300000毫秒为5分钟
+            document.getElementById('verification').style.display = 'block';
+        } else {
+            document.getElementById('verification').style.display = 'none';
+            document.getElementById('home').style.display = 'block';
+            document.getElementById('footer').style.display = 'block';
+        }
+
+        // 定义回调函数，当验证通过时调用
+        function javascriptCallback(response) {
+            // 更新验证时间
+            localStorage.setItem('lastVerified', now);
+            // 隐藏验证提示，显示首页内容
+            document.getElementById('verification').style.display = 'none';
+            document.getElementById('home').style.display = 'block';
+            document.getElementById('footer').style.display = 'block';
+        }
+		// 监听页面卸载事件
+        window.addEventListener('beforeunload', function() {
+            document.title = '(～￣▽￣)～ 欢迎下次光临';
+        });
+        // 监听页面可见性变化事件
+        document.addEventListener('visibilitychange', function() {
+            if (document.visibilityState === 'hidden') {
+                document.title = '(＃°Д°) 唉，再看看嘛';
+            } else if (document.visibilityState === 'visible') {
+                document.title = 'ヾ(≧▽≦*)o 欢迎回来';
+                setTimeout(function() {
+                    document.title = '站内工具 | 爱玩电脑的winver的小破站'; // 最后恢复默认标题
+                }, 3000); // 3秒后恢复默认标题
+            }
+        });
+    </script>
+</body>
+</html>
