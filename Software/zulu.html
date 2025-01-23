@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>站外访问警告 | 爱玩电脑的winver的小破站</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+  }
+  .warning-box {
+    width: 80%;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    text-align: center;
+  }
+  .warning-box h2 {
+    color: #d9534f;
+  }
+  .warning-box p {
+    margin: 15px 0;
+  }
+  .warning-box a {
+    color: #337ab7;
+    text-decoration: none;
+  }
+  .warning-box a:hover {
+    text-decoration: underline;
+  }
+  .warning-box button {
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .warning-box button.confirm {
+    background-color: #5cb85c;
+    color: white;
+  }
+  .warning-box button.cancel {
+    background-color: #f0ad4e;
+    color: white;
+  }
+</style>
+</head>
+<body>
+
+<div class="warning-box">
+  <img src="/Software/001.ico" alt="网站LOGO" style="height: 50px; width: 50px; margin-bottom: 20px;">
+  <h2>警告：您即将离开本网站</h2>
+  <p>您正要访问的链接 <a href="#" id="externalSiteUrl" target="_blank" class="button-link button-with-margin">Java 8, 11, 17, 21, 23 Download for Linux, Windows and macOS</a> 不属于本网站。请确保您信任该网站，并了解您访问的站点可能与本站有不同的隐私政策。（如果网站是本网站作者推荐的，请放心浏览！不过请注意分辨广告，请务必不要相信广告里任何的内容！）</p>
+  <p>您确定要继续吗？</p>
+  <button class="confirm" onclick="goToExternalSite()">是，我确定</button>
+  <button class="cancel" onclick="goBackToMainSite()">不，我留在本站</button>
+</div>
+
+<script>
+// 定义外部网站的URL变量
+var externalSiteUrl = 'https://www.azul.com/downloads/#zulu';
+
+// 监听所有a标签的点击事件
+document.addEventListener('click', function(event) {
+  if (event.target.tagName === 'A' && event.target.href) {
+    // 如果点击的是a标签且href属性存在
+    externalSiteUrl = event.target.href; // 更新externalSiteUrl为点击的链接
+    showWarningBox(); // 显示警告框
+    event.preventDefault(); // 阻止默认的链接跳转行为
+  }
+});
+
+function showWarningBox() {
+  document.querySelector('.warning-box').style.display = 'block'; // 显示警告框
+  document.getElementById('externalLink').href = externalSiteUrl; // 更新警告框中的链接
+}
+
+function goToExternalSite() {
+  window.location.href = externalSiteUrl;
+}
+
+function goBackToMainSite() {
+  window.location.href = '/'; // 重定向回主站
+}
+</script>
+
+</body>
+</html>
