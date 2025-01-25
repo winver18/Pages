@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引用Cloudflare的验证码JS文件 -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <title>主页 | 爱玩电脑的winver的小破站</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #f4f4f4, #cccccc);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow-y: scroll;
+        }
+
+        /* 滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 4px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
+
+        p {
+            font-size: 1em;
+            line-height: 1.6;
+            margin: 20px 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        .footer {
+            margin-top: 40px;
+            background: transparent;
+            color: #333;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.8em;
+            width: 100%;
+        }
+
+        /* 链接样式 */
+        .button-link {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+            cursor: pointer;
+            font-weight: 500; /* 加粗字体 */
+        }
+
+        .button-link:hover, .footer a:hover {
+            color: #e74c3c;
+        }
+
+        .footer a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .time {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        .verification-container {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .verification-prompt {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            p, .footer {
+                font-size: 0.9em;
+            }
+        }
+        .footer-bottom {
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 0;
+            background: #f4f4f4; /* 或者您喜欢的任何颜色 */
+            color: #333;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        .follow-me {
+            margin-bottom: 20px;
+        }
+        .follow-me a {
+            margin: 0 10px;
+        }
+        /* B站logo */
+        .bilibili-logo {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: #f15a41;
+            position: relative;
+            margin-right: 10px;
+        }
+        .bilibili-logo::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: 60%;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
+        /* 微信logo */
+        .wechat-logo {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: #00bb29;
+            position: relative;
+            margin-right: 10px;
+        }
+        .wechat-logo::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: 60%;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
+        /* QQ logo */
+        .qq-logo {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: #498bf5;
+            position: relative;
+            margin-right: 10px;
+        }
+        .qq-logo::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: 60%;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
+        /* Github logo */
+        .github-logo {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: #333;
+            position: relative;
+            margin-right: 10px;
+        }
+        .github-logo::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: 60%;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="verification-container" id="verification">
+        <p class="verification-prompt">我们怀疑你是机器人，请进行人机验证</p>
+        <!-- Cloudflare验证码容器 -->
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAA4jv9zKntatRfzt" data-callback="javascriptCallback"></div>
+        <div class="footer-bottom">
+            <p>验证由Cloudflare提供支持</p>
+            <p>站点密钥：0x4AAAAAAA4jv9zKntatRfzt</p>
+        </div>
+    </div>
+    <div class="container" id="home" style="display:none;">
+        <h1>欢迎来到爱玩电脑的winver的小破站</h1>
+        <p>这个网站主页的创建是为了提供一个简洁明了的个人展示平台。</p>
+
+        <div class="time" id="time"></div>
+
+        <h2>你可以访问以下网站：</h2>
+        <ul>
+            <li>
+                <a href="https://space.bilibili.com/1808002444" target="_blank" class="button-link">
+                    <div class="bilibili-logo"></div>哔哩哔哩个人主页
+                </a>
+            </li>
+            <li>
+                <a href="Essay" class="button-link">文章专栏</a>
+            </li>
+            <li>
+                <a href="Tool" class="button-link">站内工具</a>
+            </li>
+            <li>
+                <a href="Software" class="button-link">软件下载</a>
+            </li>
+            <li>
+                <a href="https://zzrbk.rth5.com/" target="_blank" class="button-link">友情链接</a>
+            </li>
+        </ul>
+    </div>
+    <div class="footer" id="footer" style="display:none;">
+        <div class="follow-me">
+            <a href="https://space.bilibili.com/1808002444" target="_blank" class="button-link">
+                <div class="bilibili-logo"></div>
+            </a>
+            <a href="https://weixin.qq.com/" target="_blank" class="button-link">
+                <div class="wechat-logo"></div>
+            </a>
+            <a href="https://im.qq.com/" target="_blank" class="button-link">
+                <div class="qq-logo"></div>
+            </a>
+            <a href="https://www.github.com/" target="_blank" class="button-link">
+                <div class="github-logo"></div>
+            </a>
+        </div>
+        <a href="https://www.github.com/" target="_blank" class="button-link">&copy; 2022-2025 曾楚乔 BEIBING 版权所有，保留所有权利</a><a> | </a><a href="https://icp.gov.moe/?keyword=20250428" target="_blank">萌ICP备20250428号</a>
+    </div>
+    <script>
+        function showTime() {
+            var date = new Date();
+            var time = date.toLocaleTimeString();
+            document.getElementById("time").textContent = "当前时间：" + time;
+        }
+        showTime();
+        setInterval(showTime, 1000);
+
+        // 获取当前时间
+        const now = new Date().getTime();
+
+        // 从localStorage获取上次验证的时间
+        const lastVerified = localStorage.getItem('lastVerified');
+
+        // 检查是否需要验证
+        if (!lastVerified || (now - lastVerified) > 300000) { // 300000毫秒为5分钟
+            document.getElementById('verification').style.display = 'block';
+        } else {
+            document.getElementById('verification').style.display = 'none';
+            document.getElementById('home').style.display = 'block';
+            document.getElementById('footer').style.display = 'block';
+        }
+
+        // 定义回调函数，当验证通过时调用
+        function javascriptCallback(response) {
+            // 更新验证时间
+            localStorage.setItem('lastVerified', now);
+            // 隐藏验证提示，显示首页内容
+            document.getElementById('verification').style.display = 'none';
+            document.getElementById('home').style.display = 'block';
+            document.getElementById('footer').style.display = 'block';
+        }
+        // 监听页面卸载事件
+        window.addEventListener('beforeunload', function() {
+            document.title = '(～￣▽￣)～ 欢迎下次光临';
+        });
+        // 监听页面可见性变化事件
+        document.addEventListener('visibilitychange', function() {
+            if (document.visibilityState === 'hidden') {
+                document.title = '(＃°Д°) 唉，再看看嘛';
+            } else if (document.visibilityState === 'visible') {
+                document.title = 'ヾ(≧▽≦*)o 欢迎回来';
+                setTimeout(function() {
+                    document.title = '主页 | 爱玩电脑的winver的小破站'; // 最后恢复默认标题
+                }, 3000); // 3秒后恢复默认标题
+            }
+        });
+    </script>
+</body>
+</html>
