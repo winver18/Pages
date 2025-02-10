@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <body onselectstart="return false">
+<title>站外访问警告 | 爱玩电脑的winver的小破站</title>
+<!-- 爱玩电脑的winver开发的原创个人网页，代码受著作权法保护 -->
+    <body onselectstart="return false">
 	<body ondragstart="return false">
 	<script>
 		//禁止调试代码
@@ -16,6 +18,12 @@
 				document.onkeydown = function (e) {
 					if (e.keyCode === 123) {
 						return false;
+					}
+					else if((e.ctrlKey) && (e.keyCode == 85)){
+						return false;
+					}
+					else if((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)){
+                		return false;
 					}
 				};
 				(() => {
@@ -48,7 +56,6 @@
 			}
 		} catch(e) {}
 	</script>
-<title>站外访问警告 | 爱玩电脑的winver的小破站</title>
 <style>
   body {
     font-family: 'Arial', sans-serif;
