@@ -2,6 +2,8 @@
 <html lang="zh">
 <head>
     <meta charset="UTF-8">
+    <title>自我介绍 | 爱玩电脑的winver的小破站</title>
+    <!-- 爱玩电脑的winver开发的原创个人网页，代码受著作权法保护 -->
     <body onselectstart="return false">
 	<body ondragstart="return false">
 	<script>
@@ -15,6 +17,12 @@
 				document.onkeydown = function (e) {
 					if (e.keyCode === 123) {
 						return false;
+					}
+					else if((e.ctrlKey) && (e.keyCode == 85)){
+						return false;
+					}
+					else if((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)){
+                		return false;
 					}
 				};
 				(() => {
@@ -47,7 +55,6 @@
 			}
 		} catch(e) {}
 	</script>
-    <title>自我介绍 | 爱玩电脑的winver的小破站</title>
 	<style>
 		body, html {
 			height: 100%;
