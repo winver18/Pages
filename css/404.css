@@ -1,0 +1,55 @@
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f4f4f4;
+	color: #333;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+.container {
+	background-color: white;
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+	font-size: 50px;
+	margin: 0;
+	color: #e74c3c;
+}
+
+p {
+	font-size: 20px;
+	margin: 20px 0;
+}
+
+a {
+	display: inline-block;
+	padding: 10px 20px;
+	background-color: #e74c3c;
+	color: white;
+	border-radius: 5px;
+	text-decoration: none;
+	transition: background-color 0.3s;
+}
+.footer {
+	position: absolute; /* 使用绝对定位 */
+	bottom: 0; /* 使footer位于页面底部 */
+	width: 100%;
+	background: transparent;
+	color: #333;
+	text-align: center;
+	padding: 20px 0;
+	font-size: 0.8em;
+	margin-top: 0; /* 移除原margin-top样式 */
+}
+
+a:hover {
+	background-color: #c0392b;
+}
