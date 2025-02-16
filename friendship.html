@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引用Cloudflare的验证码JS文件 -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <title>友情链接 | 爱玩电脑的winver的小破站</title>
+    <!-- 爱玩电脑的winver开发的原创个人网页，代码受著作权法保护 -->
+    <body onselectstart="return false">
+    <body ondragstart="return false">
+	<script>
+		//禁止调试代码
+		try {
+			if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+			} else {
+				document.oncontextmenu = function (e) {
+					return false;
+				};
+				document.onkeydown = function (e) {
+					if (e.keyCode === 123) {
+						return false;
+					}
+					else if((e.ctrlKey) && (e.keyCode == 85)){
+						return false;
+					}
+					else if((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)){
+	                			return false;
+					}
+				};
+				(() => {
+					function block() {
+						setInterval(() => {
+							if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
+								window.location.href='about:blank';
+							}
+							debugger;
+						}, 50);
+					}
+					try {
+						block();
+					} catch (err) {}
+				})();
+				window.oncopy = function() {
+					return false; // 阻止复制操作
+				};
+
+				(function(){
+					var i = 0;
+					var re = function(){
+						window.location.href='about:blank';
+					};
+					console.log(re);
+					re.toString = function(){
+						window.location.href='about:blank';
+					};
+				})();
+			}
+		} catch(e) {}
+	</script>
+<link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    <div class="verification-container" id="verification">
+		<p class="verification-prompt">我们怀疑你是机器人，请进行人机验证</p>
+		<!-- Cloudflare验证码容器 -->
+		<div class="cf-turnstile" data-sitekey="0x4AAAAAAA4jv9zKntatRfzt" data-callback="javascriptCallback"></div>
+		<div class="footer-bottom">
+			<p>验证由Cloudflare提供支持</p>
+			<p>站点密钥：0x4AAAAAAA4jv9zKntatRfzt</p>
+		</div>
+	</div>
+    <div class="container" id="home" style="display:none;">
+        <h1>欢迎来到爱玩电脑的winver的友情链接页面</h1>
+        <p>设立此友情链接，旨在为大家提供便捷通道，以便轻松访问我朋友的网站。</p>
+
+        <div class="time" id="time"></div>
+
+        <h2>您可以通过以下链接访问相关网站：</h2>
+        <ul>
+            <li>
+		    <img style="display:inline-block;vertical-align:middle;width:25px;height:25px" alt="张钊睿的博客" src="https://zzrbk.rth2.xyz/favicon.ico">
+                    <a href="https://zzrbk.rth2.xyz" target="_blank" class="button-link">
+                    张钊睿的博客
+                </a>
+            </li>
+            <li>
+		    <img style="display:inline-block;vertical-align:middle;width:25px;height:25px" alt="我叫石仲彦！" src="https://shizhongyan.top/icon/shizhongyan.png">
+                    <a href="https://shizhongyan.top" target="_blank" class="button-link">
+                    我叫石仲彦！
+                </a>
+            </li>
+	    <li>
+		    <img style="display:inline-block;vertical-align:middle;width:25px;height:25px" alt="CodeCrafter Studio" src="https://www.ccstudio.top/static/image/logo.png">
+                    <a href="https://www.ccstudio.top/" target="_blank" class="button-link">
+                    CodeCrafter Studio
+                </a>
+            </li>
+	    <li>
+		    <img style="display:inline-block;vertical-align:middle;width:25px;height:25px" alt="返回首页" src="favicon.ico">
+                    <a href="/" target="_blank" class="button-link">
+                    返回首页
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="footer" id="footer" style="display:none;">
+        <div class="footer">
+		<font size="2"> Copyright © 2022 - 2025 爱玩电脑的winver | <a href="https://ipw.cn/ipv6webcheck/?site=winver18.github.io" title="本站支持IPv6访问" target='_blank'><img style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问" src="https://static.ipw.cn/icon/ipv6-s6.svg"></a> <a href="https://ipw.cn/ssl/?site=winver18.github.io" title="本站支持SSL安全访问" target='_blank'><img style='display:inline-block;vertical-align:middle' alt="本站支持SSL安全访问" src="https://static.ipw.cn/icon/ssl-s6.svg"></a> | All right reserved <br> <img style="display:inline-block;vertical-align:middle;width:20px;height:20px" alt="萌ICP备案号" src="https://icp.gov.moe/images/ico64.png"><a href="https://icp.gov.moe/?keyword=20250428" target="_blank">萌ICP备20250428号</a></font>
+	</div>
+    </div>
+    <script>
+        function showTime() {
+            var date = new Date();
+            var time = date.toLocaleTimeString();
+            document.getElementById("time").textContent = "当前时间：" + time;
+        }
+        showTime();
+        setInterval(showTime, 1000);
+
+        // 获取当前时间
+        const now = new Date().getTime();
+
+        // 从localStorage获取上次验证的时间
+        const lastVerified = localStorage.getItem('lastVerified');
+
+        // 检查是否需要验证
+        if (!lastVerified || (now - lastVerified) > 300000) { // 300000毫秒为5分钟
+            document.getElementById('verification').style.display = 'block';
+        } else {
+            document.getElementById('verification').style.display = 'none';
+            document.getElementById('home').style.display = 'block';
+            document.getElementById('footer').style.display = 'block';
+        }
+
+        // 定义回调函数，当验证通过时调用
+        function javascriptCallback(response) {
+            // 更新验证时间
+            localStorage.setItem('lastVerified', now);
+            // 隐藏验证提示，显示首页内容
+            document.getElementById('verification').style.display = 'none';
+            document.getElementById('home').style.display = 'block';
+            document.getElementById('footer').style.display = 'block';
+        }
+
+	// 定义回调函数，当验证通过时调用
+        function javascriptCallback(response) {
+            // 更新验证时间
+            localStorage.setItem('lastVerified', now);
+
+            // 验证成功后，直接等待几秒再显示主页
+            setTimeout(function() {
+                document.getElementById('verification').style.display = 'none';
+                document.getElementById('home').style.display = 'block';
+                document.getElementById('footer').style.display = 'block';
+            }, 1000); // 1秒后显示主页
+        }
+	
+		// 监听页面卸载事件
+        window.addEventListener('beforeunload', function() {
+            document.title = '(～￣▽￣)～ 欢迎下次光临';
+        });
+        // 监听页面可见性变化事件
+        document.addEventListener('visibilitychange', function() {
+            if (document.visibilityState === 'hidden') {
+                document.title = '(＃°Д°) 唉，再看看嘛';
+            } else if (document.visibilityState === 'visible') {
+                document.title = 'ヾ(≧▽≦*)o 欢迎回来';
+                setTimeout(function() {
+                    document.title = '友情链接 | 爱玩电脑的winver的小破站'; // 最后恢复默认标题
+                }, 3000); // 3秒后恢复默认标题
+            }
+        });
+    </script>
+</body>
+</html>
