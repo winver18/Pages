@@ -269,6 +269,21 @@
             document.getElementById('home').style.display = 'block';
             document.getElementById('footer').style.display = 'block';
         }
+	
+
+	// 定义回调函数，当验证通过时调用
+        function javascriptCallback(response) {
+            // 更新验证时间
+            localStorage.setItem('lastVerified', now);
+
+            // 验证成功后，直接等待几秒再显示主页
+            setTimeout(function() {
+                document.getElementById('verification').style.display = 'none';
+                document.getElementById('home').style.display = 'block';
+                document.getElementById('footer').style.display = 'block';
+            }, 1000); // 1秒后显示主页
+        }
+	
 		// 监听页面卸载事件
         window.addEventListener('beforeunload', function() {
             document.title = '(～￣▽￣)～ 欢迎下次光临';
