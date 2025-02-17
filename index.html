@@ -9,38 +9,7 @@
 </head>
 <body onselectstart="return false" ondragstart="return false">
     <!-- 调试阻止脚本 -->
-    <script>
-        try {
-            if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-            } else {
-                document.oncontextmenu = function (e) { return false; };
-                document.onkeydown = function (e) {
-                    if (e.keyCode === 123) return false;
-                    if((e.ctrlKey) && (e.keyCode == 85)) return false;
-                    if((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)) return false;
-                };
-                (() => {
-                    function block() {
-                        setInterval(() => {
-                            if (window.outerHeight - window.innerHeight > 200 || 
-                                window.outerWidth - window.innerWidth > 200) {
-                                window.location.href='about:blank';
-                            }
-                            debugger;
-                        }, 50);
-                    }
-                    try { block(); } catch (err) {}
-                })();
-                window.oncopy = function() { return false; };
-                (function(){
-                    var i = 0;
-                    var re = function(){ window.location.href='about:blank'; };
-                    console.log(re);
-                    re.toString = function(){ window.location.href='about:blank'; };
-                })();
-            }
-        } catch(e) {}
-    </script>
+    
 
     <!-- 验证模块 -->
     <div class="verification-container" id="verification">
