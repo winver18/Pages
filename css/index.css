@@ -1,5 +1,4 @@
 body {
-    font-family: 'Roboto', sans-serif;
     background: url('https://shizhongyan.top/icon/th.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #333;
@@ -12,6 +11,10 @@ body {
     align-items: center;
     height: 100vh;
     overflow-y: scroll;
+}
+@font-face {
+  font-family: '小可奶酪体';
+  src: url('../font2.woff') format('truetype');
 }
 
 ::-webkit-scrollbar {
