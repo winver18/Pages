@@ -13,8 +13,11 @@ body {
     overflow-y: scroll;
 }
 @font-face {
-  font-family: '小可奶酪体';
-  src: url('../font2.woff') format('truetype');
+  font-family: 'font2';
+  src: url('../font2.woff');
+}
+* {
+    font2: font2;
 }
 
 ::-webkit-scrollbar {
