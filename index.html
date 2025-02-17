@@ -5,13 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <title>主页 | 爱玩电脑的winver的小破站</title>
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body onselectstart="return false" ondragstart="return false">
-    <!-- 调试阻止脚本 -->
-    
+    <script>
+        try {
+            if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+            } else {
+                document.oncontextmenu = function (e) { return false; };
+                document.onkeydown = function (e) {
+                    if (e.keyCode === 123) return false;
+                    if((e.ctrlKey) && (e.keyCode == 85)) return false;
+                    if((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)) return false;
+                };
+                (() => {
+                    function block() {
+                        setInterval(() => {
+                            if (window.outerHeight - window.innerHeight > 200 || 
+                                window.outerWidth - window.innerWidth > 200) {
+                                window.location.href='about:blank';
+                            }
+                            debugger;
+                        }, 50);
+                    }
+                    try { block(); } catch (err) {}
+                })();
+                window.oncopy = function() { return false; };
+                (function(){
+                    var i = 0;
+                    var re = function(){ window.location.href='about:blank'; };
+                    console.log(re);
+                    re.toString = function(){ window.location.href='about:blank'; };
+                })();
+            }
+        } catch(e) {}
+    </script>
 
-    <!-- 验证模块 -->
     <div class="verification-container" id="verification">
         <p class="verification-prompt">我们怀疑你是机器人，请进行人机验证</p>
         <div class="cf-turnstile" data-sitekey="0x4AAAAAAA4jv9zKntatRfzt" data-callback="javascriptCallback"></div>
@@ -21,7 +50,6 @@
         </div>
     </div>
 
-    <!-- 主内容 -->
     <div class="container" id="home" style="display:none;">
         <h1>欢迎来到爱玩电脑的winver的小破站</h1>
         <p>这个网站主页的创建是为了提供一个简洁明了的个人展示平台。</p>
@@ -58,11 +86,7 @@
         </font>
     </div>
 
-    <!-- 雪花特效 -->
-    <div id="snow"></div>
-
     <script>
-        // 时间显示
         function showTime() {
             var date = new Date();
             var time = date.toLocaleTimeString();
@@ -71,7 +95,6 @@
         showTime();
         setInterval(showTime, 1000);
 
-        // 验证逻辑
         const now = new Date().getTime();
         const lastVerified = localStorage.getItem('lastVerified');
         if (!lastVerified || (now - lastVerified) > 300000) {
@@ -82,7 +105,6 @@
             document.getElementById('footer').style.display = 'block';
         }
 
-        // 验证回调
         function javascriptCallback(response) {
             localStorage.setItem('lastVerified', now);
             setTimeout(() => {
@@ -92,7 +114,6 @@
             }, 1000);
         }
 
-        // 页面交互
         window.addEventListener('beforeunload', function() {
             document.title = '(～￣▽￣)～ 欢迎下次光临';
         });
@@ -106,21 +127,6 @@
                 }, 3000);
             }
         });
-
-        // 雪花生成
-        function createSnow() {
-            const snowContainer = document.getElementById('snow');
-            for (let i = 0; i < 50; i++) {
-                const snow = document.createElement('div');
-                snow.className = 'snowflake';
-                snow.innerHTML = '❅';
-                snow.style.left = Math.random() * 100 + 'vw';
-                snow.style.animationDuration = Math.random() * 3 + 2 + 's';
-                snow.style.animationDelay = Math.random() * 5 + 's';
-                snowContainer.appendChild(snow);
-            }
-        }
-        window.onload = createSnow;
     </script>
 </body>
 </html>
