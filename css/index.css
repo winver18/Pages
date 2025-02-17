@@ -1,4 +1,12 @@
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('font2.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
+    font-family: 'MyCustomFont', 'Roboto', sans-serif;
     background: url('https://shizhongyan.top/icon/th.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #333;
@@ -11,13 +19,6 @@ body {
     align-items: center;
     height: 100vh;
     overflow-y: scroll;
-}
-@font-face {
-  font-family: 'font2';
-  src: url('../font2.woff');
-}
-* {
-    font2: font2;
 }
 
 ::-webkit-scrollbar {
@@ -102,29 +103,6 @@ li {
     color: #e74c3c;
     font-weight: bold;
     margin-bottom: 10px;
-}
-
-#snow {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.snowflake {
-    position: fixed;
-    color: #fff;
-    font-size: 20px;
-    animation: fall linear infinite;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-}
-
-@keyframes fall {
-    0% { transform: translateY(-10vh) translateX(0); }
-    100% { transform: translateY(110vh) translateX(50px); }
 }
 
 @media (max-width: 768px) {
