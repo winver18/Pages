@@ -7,6 +7,50 @@
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     <title>主页 | 爱玩电脑的winver的小破站</title>
     <!-- 爱玩电脑的winver开发的原创个人网页，代码受著作权法保护 -->
+	<style>
+        /* 新增雪花特效样式 */
+        .snowflake {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+    </style>
+    <script>
+        // 新增雪花特效脚本
+        function createSnow() {
+            const snowContainer = document.createElement('div');
+            document.body.appendChild(snowContainer);
+
+            setInterval(() => {
+                const snow = document.createElement('div');
+                snow.classList.add('snowflake');
+                
+                snow.style.left = Math.random() * window.innerWidth + 'px';
+                snow.style.animation = `fall ${Math.random() * 3 + 2}s linear infinite`;
+                snow.style.opacity = Math.random();
+                snow.style.width = snow.style.height = Math.random() * 10 + 5 + 'px';
+
+                snowContainer.appendChild(snow);
+
+                setTimeout(() => snow.remove(), 5000);
+            }, 100);
+        }
+
+        // 定义雪花飘落动画
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                to {
+                    transform: translateY(100vh) rotate(360deg);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
     <body onselectstart="return false">
     <body ondragstart="return false">
 	<script>
@@ -60,7 +104,7 @@
 	</script>
 <link rel="stylesheet" href="/css/index.css">
 </head>
-<body>
+<body onselectstart="return false" ondragstart="return false" style="background-image: url('https://example.com/your-background-image.jpg'); background-size: cover;">
     <div class="verification-container" id="verification">
 		<p class="verification-prompt">我们怀疑你是机器人，请进行人机验证</p>
 		<!-- Cloudflare验证码容器 -->
@@ -70,6 +114,17 @@
 			<p>站点密钥：0x4AAAAAAA4jv9zKntatRfzt</p>
 		</div>
 	</div>
+	<script>
+    // 页面加载完成后启动雪花特效
+    window.addEventListener('load', () => {
+        createSnow();
+        // 添加背景图闪烁特效
+        setInterval(() => {
+            document.body.style.backgroundBlendMode = 
+                Math.random() > 0.5 ? 'overlay' : 'soft-light';
+        }, 3000);
+    });
+</script>
     <div class="container" id="home" style="display:none;">
         <h1>欢迎来到爱玩电脑的winver的小破站</h1>
         <p>这个网站主页的创建是为了提供一个简洁明了的个人展示平台。</p>
