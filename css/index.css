@@ -1,34 +1,7 @@
-/* 默认浅色主题 */
-:root {
-    --background-color: #f4f4f4;
-    --text-color: #333;
-    --container-bg: #fff;
-    --primary-color: #e74c3c;
-    --secondary-color: #6a11cb;
-    --scrollbar-thumb: #888;
-    --footer-bg: transparent;
-    --footer-text: #333;
-}
-
-/* 深色主题 */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --background-color: #1a1a1a;
-        --text-color: #f4f4f4;
-        --container-bg: #2d2d2d;
-        --primary-color: #ff6b6b;
-        --secondary-color: #2575fc;
-        --scrollbar-thumb: #555;
-        --footer-bg: #1a1a1a;
-        --footer-text: #f4f4f4;
-    }
-}
-
-/* 应用 CSS 变量 */
 body {
     font-family: 'Roboto', sans-serif;
-    background: var(--background-color);
-    color: var(--text-color);
+    background: linear-gradient(to right, #f4f4f4, #cccccc);
+    color: #333;
     margin: 0;
     padding: 0;
     text-align: center;
@@ -38,14 +11,14 @@ body {
     align-items: center;
     height: 100vh;
     overflow-y: scroll;
-}
+    }
 
 /* 滚动条样式 */
 ::-webkit-scrollbar {
     width: 8px;
 }
 ::-webkit-scrollbar-thumb {
-    background-color: var(--scrollbar-thumb);
+    background-color: #888;
     border-radius: 4px;
 }
 
@@ -54,7 +27,7 @@ body {
     max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
-    background: var(--container-bg);
+    background: #fff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
@@ -62,7 +35,6 @@ body {
 h1 {
     font-size: 2.5em;
     margin-bottom: 0.5em;
-    color: var(--primary-color);
 }
 
 p {
@@ -82,8 +54,8 @@ li {
 
 .footer {
     margin-top: 40px;
-    background: var(--footer-bg);
-    color: var(--footer-text);
+    background: transparent;
+    color: #333;
     text-align: center;
     padding: 20px 0;
     font-size: 0.8em;
@@ -92,19 +64,19 @@ li {
 
 /* 链接样式 */
 .button-link {
-    color: var(--primary-color);
+    color: #333;
     text-decoration: none;
     transition: color 0.3s;
     cursor: pointer;
-    font-weight: 500;
+    font-weight: 500; /* 加粗字体 */
 }
 
 .button-link:hover, .footer a:hover {
-    color: var(--secondary-color);
+    color: #e74c3c;
 }
 
 .footer a {
-    color: var(--footer-text);
+    color: #333;
     text-decoration: none;
     transition: color 0.3s;
 }
@@ -121,7 +93,7 @@ li {
 }
 
 .verification-prompt {
-    color: var(--primary-color);
+    color: #e74c3c;
     font-weight: bold;
     margin-bottom: 10px;
 }
@@ -129,15 +101,26 @@ li {
 /* 响应式设计 */
 @media (max-width: 768px) {
     .container {
-        width: 95%;
-        padding: 10px;
-    }
+    width: 95%;
+    padding: 10px;
+	}
 
-    h1 {
-        font-size: 2em;
-    }
+	h1 {
+		font-size: 2em;
+	}
 
-    p, .footer {
-        font-size: 0.9em;
-    }
+	p, .footer {
+		font-size: 0.9em;
+	}
+}
+.footer-bottom {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px 0;
+    background: #f4f4f4;
+    color: #333;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
