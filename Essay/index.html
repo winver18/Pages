@@ -119,7 +119,16 @@
             document.getElementById('home').style.display = 'block';
             document.getElementById('footer').style.display = 'block';
         }
-	
+
+        // 定义回调函数，当验证通过时调用
+        function javascriptCallback(response) {
+            // 更新验证时间
+            localStorage.setItem('lastVerified', now);
+            // 隐藏验证提示，显示首页内容
+            document.getElementById('verification').style.display = 'none';
+            document.getElementById('home').style.display = 'block';
+            document.getElementById('footer').style.display = 'block';
+        }
 
 	// 定义回调函数，当验证通过时调用
         function javascriptCallback(response) {
@@ -131,19 +140,9 @@
                 document.getElementById('verification').style.display = 'none';
                 document.getElementById('home').style.display = 'block';
                 document.getElementById('footer').style.display = 'block';
-            }, 2000); // 2秒后显示主页
-	}
-	
-
-        // 定义回调函数，当验证通过时调用
-        function javascriptCallback(response) {
-            // 更新验证时间
-            localStorage.setItem('lastVerified', now);
-            // 隐藏验证提示，显示首页内容
-            document.getElementById('verification').style.display = 'none';
-            document.getElementById('home').style.display = 'block';
-            document.getElementById('footer').style.display = 'block';
+            }, 1000); // 1秒后显示主页
         }
+	
 		// 监听页面卸载事件
         window.addEventListener('beforeunload', function() {
             document.title = '(～￣▽￣)～ 欢迎下次光临';
@@ -155,7 +154,7 @@
             } else if (document.visibilityState === 'visible') {
                 document.title = 'ヾ(≧▽≦*)o 欢迎回来';
                 setTimeout(function() {
-                    document.title = '文章专栏 | 爱玩电脑的winver的小破站'; // 最后恢复默认标题
+                    document.title = '友情链接 | 爱玩电脑的winver的小破站'; // 最后恢复默认标题
                 }, 3000); // 3秒后恢复默认标题
             }
         });
