@@ -67,8 +67,10 @@
 		<!-- Cloudflare验证码容器 -->
 		<div class="cf-turnstile" data-sitekey="0x4AAAAAAA4jv9zKntatRfzt" data-callback="javascriptCallback"></div>
 		<div class="footer-bottom">
-			<p>Ray ID：0x4AAAAAAA4jv9zKntatRfzt</p>
-			<p>性能和安全由Cloudflare提供</p>
+			<div class="footer-bottom">
+			    <p id="ray-id">Ray ID：加载中...</p>
+			    <p>性能和安全由Cloudflare提供</p>
+			</div>
 		</div>
 	</div>
     <div class="container" id="home" style="display:none;">
@@ -137,6 +139,22 @@
             document.getElementById('home').style.display = 'block';
             document.getElementById('footer').style.display = 'block';
         }
+
+	document.addEventListener("DOMContentLoaded", function () {
+	        // 尝试从 <meta> 标签中获取 Ray ID
+	        const rayIdElement = document.querySelector('meta[name="cf-ray"]');
+	        let rayId = "未知";
+	
+	        if (rayIdElement) {
+	            rayId = rayIdElement.getAttribute("content");
+	        } else {
+	            console.warn("未找到 Ray ID 的 <meta> 标签。");
+	        }
+	
+	        // 将 Ray ID 显示在页脚
+	        const rayIdDisplay = document.getElementById("ray-id");
+	        rayIdDisplay.textContent = `Ray ID：${rayId}`;
+         });
 
 	// 定义回调函数，当验证通过时调用
         function javascriptCallback(response) {
