@@ -1,3 +1,4 @@
+
  <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -61,16 +62,21 @@
 <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
+    <div class="theme-switcher">
+      <input type="checkbox" id="theme-toggle" class="theme-toggle">
+      <label for="theme-toggle" class="theme-label">
+        <span class="sun-icon">🌞</span>
+        <span class="moon-icon">🌜</span>
+      </label>
+    </div>
     <div class="verification-container" id="verification">
 		<p class="verification-prompt">正在验证您是否是真人。这可能需要几秒钟时间。</p>
 	        <p>验证所用的时间比预期时间长。如果问题仍然存在，请检查您的Internet连接并刷新页面。</p>
 		<!-- Cloudflare验证码容器 -->
 		<div class="cf-turnstile" data-sitekey="0x4AAAAAAA4jv9zKntatRfzt" data-callback="javascriptCallback"></div>
 		<div class="footer-bottom">
-			<div class="footer-bottom">
-			    <p id="ray-id">Ray ID：加载中...</p>
-			    <p>性能和安全由Cloudflare提供</p>
-			</div>
+			<p>Ray ID：0x4AAAAAAA4jv9zKntatRfzt</p>
+			<p>性能和安全由Cloudflare提供</p>
 		</div>
 	</div>
     <div class="container" id="home" style="display:none;">
@@ -140,24 +146,7 @@
             document.getElementById('footer').style.display = 'block';
         }
 
-    // 延迟获取 Ray ID 的函数
-    function getRayId() {
-        const rayIdElement = document.querySelector('meta[name="cf-ray"]');
-        if (rayIdElement) {
-            const rayId = rayIdElement.getAttribute("content");
-            document.getElementById("ray-id").textContent = `Ray ID：${rayId}`;
-        } else {
-            console.warn("未找到 Ray ID 的 <meta> 标签。");
-            document.getElementById("ray-id").textContent = "Ray ID：未知";
-        }
-    }
-
-    // 在页面加载完成后尝试获取 Ray ID
-    document.addEventListener("DOMContentLoaded", function () {
-        // 延迟 1 秒后尝试获取 Ray ID
-        setTimeout(getRayId, 1000);
-    });
-
+	
 	// 定义回调函数，当验证通过时调用
         function javascriptCallback(response) {
             // 更新验证时间
@@ -170,6 +159,26 @@
                 document.getElementById('footer').style.display = 'block';
             }, 1000); // 1秒后显示主页
         }
+      // 获取切换按钮和复选框元素
+      const themeToggle = document.getElementById('theme-toggle');
+      
+      // 检查localStorage中是否有用户的主题偏好
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.classList.add(savedTheme);
+        themeToggle.checked = savedTheme === 'dark';
+      }
+      
+      // 监听复选框的变化，切换主题
+      themeToggle.addEventListener('change', () => {
+        if (themeToggle.checked) {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+          localStorage.setItem('theme', 'light');
+        }
+      });
 	
 		// 监听页面卸载事件
         window.addEventListener('beforeunload', function() {
