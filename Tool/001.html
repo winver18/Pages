@@ -5,60 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>网络延迟测试 | 爱玩电脑的winver的小破站</title>
     <!-- 爱玩电脑的winver开发的原创个人网页，代码受著作权法保护 -->
-    <body onselectstart="return false">
-	<body ondragstart="return false">
-	<script>
-		//禁止调试代码
-		try {
-			if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-			} else {
-				document.oncontextmenu = function (e) {
-					return false;
-				};
-				document.onkeydown = function (e) {
-					if (e.keyCode === 123) {
-						return false;
-					}
-					else if((e.ctrlKey) && (e.keyCode == 85)){
-						return false;
-					}
-					else if((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)){
-	                			return false;
-					}
-				};
-				(() => {
-					function block() {
-						setInterval(() => {
-							if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
-								window.location.href='about:blank';
-							}
-							debugger;
-						}, 50);
-					}
-					try {
-						block();
-					} catch (err) {}
-				})();
-				window.oncopy = function() {
-					return false; // 阻止复制操作
-				};
+    <script>
+        // 禁止调试代码
+        try {
+            if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+            } else {
+                document.oncontextmenu = function (e) {
+                    return false;
+                };
+                document.onkeydown = function (e) {
+                    if (e.keyCode === 123) {
+                        return false;
+                    } else if ((e.ctrlKey) && (e.keyCode == 85)) {
+                        return false;
+                    } else if ((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)) {
+                        return false;
+                    }
+                };
+                (() => {
+                    function block() {
+                        setInterval(() => {
+                            if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
+                                window.location.href = 'about:blank';
+                            }
+                            debugger;
+                        }, 50);
+                    }
+                    try {
+                        block();
+                    } catch (err) {}
+                })();
+                window.oncopy = function () {
+                    return false; // 阻止复制操作
+                };
 
-				(function(){
-					var i = 0;
-					var re = function(){
-						window.location.href='about:blank';
-					};
-					console.log(re);
-					re.toString = function(){
-						window.location.href='about:blank';
-					};
-				})();
-			}
-		} catch(e) {}
-	</script>
-<link rel="stylesheet" href="/css/Tool.css">
+                (function () {
+                    var i = 0;
+                    var re = function () {
+                        window.location.href = 'about:blank';
+                    };
+                    console.log(re);
+                    re.toString = function () {
+                        window.location.href = 'about:blank';
+                    };
+                })();
+            }
+        } catch (e) {}
+    </script>
+    <link rel="stylesheet" href="/css/Tool.css">
 </head>
-<body>
+<body onselectstart="return false" ondragstart="return false">
 
 <div class="container">
     <h1>网络速度测试页面</h1>
@@ -72,44 +68,54 @@
             <li>点击“测试延迟”按钮。</li>
             <li>工具将显示延迟时间（以毫秒为单位），或者指示连接失败。</li>
         </ol>
-	<a href="/" class="button-link">返回上一级</a>
+        <a href="/" class="button-link">返回上一级</a>
     </div>
 </div>
 
 <script>
-    function measure=() {
+    function measure速度() {
         var url = document.getElementById('testUrl').value;
         if (!url) {
             alert('请输入一个URL。');
             return;
         }
+        if (!url.match(/^https?:\/\/.+/)) { // 简单检查是否是 HTTP/HTTPS URL
+            alert('请输入一个有效的 HTTP/HTTPS URL。');
+            return;
+        }
         var start = new Date(); // 测试开始时间
         var xhr = new XMLHttpRequest(); // 创建XMLHttpRequest对象
         xhr.open('GET', url, true); // 打开一个GET请求
-        xhr.onreadystatechange = function() {
+        xhr.onreadystatechange = function () {
             if (xhr.readyState === 4) { // 当请求完成时
-                var end = new Date(); // 测试结束时间
-                var timeDiff = end - start; // 计算时间差
-                document.getElementById('速度').innerText = '网络速度： ' + (timeDiff / 1000).toFixed(3) + '秒';
+                if (xhr.status === 200) { // 请求成功
+                    var end = new Date(); // 测试结束时间
+                    var timeDiff = end - start; // 计算时间差
+                    document.getElementById('速度').innerText = '网络速度： ' + (timeDiff / 1000).toFixed(3) + '秒';
+                } else { // 请求失败
+                    document.getElementById('速度').innerText = '连接失败：' + xhr.statusText;
+                }
             }
         };
         xhr.send(); // 发送请求
     }
-	// 监听页面卸载事件
-        window.addEventListener('beforeunload', function() {
-            document.title = '(～￣▽￣)～ 欢迎下次光临';
-        });
-        // 监听页面可见性变化事件
-        document.addEventListener('visibilitychange', function() {
-            if (document.visibilityState === 'hidden') {
-                document.title = '(＃°Д°) 唉，再看看嘛';
-            } else if (document.visibilityState === 'visible') {
-                document.title = 'ヾ(≧▽≦*)o 欢迎回来';
-                setTimeout(function() {
-                    document.title = '网络延迟测试 | 爱玩电脑的winver的小破站'; // 最后恢复默认标题
-                }, 3000); // 3秒后恢复默认标题
-            }
-        });
+
+    // 监听页面卸载事件
+    window.addEventListener('beforeunload', function () {
+        document.title = '(～￣▽￣)～ 欢迎下次光临';
+    });
+
+    // 监听页面可见性变化事件
+    document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'hidden') {
+            document.title = '(＃°Д°) 唉，再看看嘛';
+        } else if (document.visibilityState === 'visible') {
+            document.title = 'ヾ(≧▽≦*)o 欢迎回来';
+            setTimeout(function () {
+                document.title = '网络延迟测试 | 爱玩电脑的winver的小破站'; // 最后恢复默认标题
+            }, 3000); // 3秒后恢复默认标题
+        }
+    });
 </script>
 
 </body>
