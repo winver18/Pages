@@ -17,7 +17,7 @@ html, body {
     background: white;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    text-align: center; /* 文本居中 */
+    /* 移除 text-align: center; 让文字左对齐 */
 }
 
 .footer {
@@ -37,7 +37,7 @@ html, body {
 }
 
 #time {
-    text-align: center;
+    text-align: center; /* 时间可以保持居中 */
     margin-top: 20px;
     font-size: 1em;
     color: #333;
