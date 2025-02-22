@@ -8,7 +8,7 @@ body, html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* 调整对齐方式 */
+    justify-content: center; /* 让内容垂直居中 */
     min-height: 100vh; /* 设置最小高度 */
 }
 
@@ -20,7 +20,7 @@ body, html {
     border-radius: 12px; /* 容器圆角 */
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease-in-out;
-    margin-top: 1vh; /* 进一步减少顶部边距 */
+    text-align: center; /* 文本居中 */
 }
 
 .container:hover {
