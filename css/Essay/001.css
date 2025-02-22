@@ -1,138 +1,53 @@
-/* 基础样式 */
-body {
-    font-family: 'Roboto', sans-serif;
-    background: linear-gradient(to right, #f4f4f4, #cccccc);
-    color: #333;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start; /* 顶部对齐 */
-    min-height: 100vh; /* 最小高度为视口高度 */
-    overflow-y: auto; /* 允许垂直滚动 */
+/* 链接基础样式 */
+a {
+    color: #333; /* 默认文字颜色 */
+    text-decoration: none; /* 去掉下划线 */
+    transition: all 0.3s ease; /* 平滑过渡效果 */
+    font-weight: 500; /* 加粗字体 */
 }
 
-/* 滚动条样式 */
-::-webkit-scrollbar {
-    width: 8px;
+/* 链接悬停效果 */
+a:hover {
+    color: #e74c3c; /* 悬停时文字颜色变为红色 */
+    text-decoration: underline; /* 悬停时显示下划线 */
 }
 
-::-webkit-scrollbar-thumb {
-    background-color: #888;
-    border-radius: 4px;
-}
-
-/* 容器样式 */
-.container {
-    width: 90%;
-    max-width: 1000px;
-    margin: 20px auto; /* 上下边距为 20px，水平居中 */
-    padding: 20px;
-    background: #fff;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    text-align: left; /* 文字左对齐 */
-}
-
-/* 标题样式 */
-h1 {
-    font-size: 2.5em;
-    margin-bottom: 0.5em;
-}
-
-/* 段落样式 */
-p {
-    font-size: 1em;
-    line-height: 1.6;
-    margin: 20px 0;
-}
-
-/* 列表样式 */
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    margin: 10px 0;
-}
-
-/* 页脚样式 */
-.footer {
-    margin-top: 40px;
-    background: transparent;
-    color: #333;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 0.8em;
-    width: 100%;
-}
-
-/* 链接样式 */
+/* 按钮样式链接 */
 .button-link {
-    color: #333;
-    text-decoration: none;
-    transition: color 0.3s;
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 6px;
+    background-image: linear-gradient(to right, #667eea, #764ba2); /* 渐变背景 */
+    color: white; /* 文字颜色 */
+    font-size: 1em;
     cursor: pointer;
-    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* 阴影效果 */
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); /* 文字阴影 */
 }
 
-.button-link:hover,
-.footer a:hover {
-    color: #e74c3c;
+/* 按钮悬停效果 */
+.button-link:hover {
+    background-image: linear-gradient(to right, #764ba2, #667eea); /* 悬停时渐变反向 */
+    transform: scale(1.05); /* 轻微放大 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* 悬停时阴影加深 */
 }
 
+/* 按钮点击效果 */
+.button-link:active {
+    transform: scale(0.95); /* 点击时轻微缩小 */
+}
+
+/* 页脚链接样式 */
 .footer a {
-    color: #333;
-    text-decoration: none;
-    transition: color 0.3s;
+    color: #333; /* 默认文字颜色 */
+    text-decoration: none; /* 去掉下划线 */
+    transition: color 0.3s ease; /* 平滑过渡效果 */
 }
 
-/* 时间样式 */
-.time {
-    margin-top: 20px;
-    font-size: 1.2em;
-    text-align: left; /* 时间左对齐 */
-}
-
-/* 验证容器样式 */
-.verification-container {
-    display: none;
-    text-align: left; /* 验证提示左对齐 */
-    margin-top: 20px;
-}
-
-.verification-prompt {
-    color: #e74c3c;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-/* 底部页脚样式 */
-.footer-bottom {
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-    background: #f4f4f4;
-    color: #333;
-    position: relative; /* 改为相对定位 */
-    margin-top: 40px; /* 增加顶部边距 */
-}
-
-/* 响应式设计 */
-@media (max-width: 768px) {
-    .container {
-        width: 95%;
-        padding: 15px;
-    }
-
-    h1 {
-        font-size: 2em;
-    }
-
-    p,
-    .footer {
-        font-size: 0.9em;
-    }
+.footer a:hover {
+    color: #e74c3c; /* 悬停时文字颜色变为红色 */
+    text-decoration: underline; /* 悬停时显示下划线 */
 }
