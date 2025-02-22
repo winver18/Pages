@@ -1,3 +1,4 @@
+/* 默认样式 */
 body {
     font-family: 'Roboto', sans-serif;
     background: linear-gradient(to right, #f4f4f4, #cccccc);
@@ -11,15 +12,6 @@ body {
     align-items: center;
     height: 100vh;
     overflow-y: scroll;
-    }
-
-/* 滚动条样式 */
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-thumb {
-    background-color: #888;
-    border-radius: 4px;
 }
 
 .container {
@@ -62,13 +54,12 @@ li {
     width: 100%;
 }
 
-/* 链接样式 */
 .button-link {
     color: #333;
     text-decoration: none;
     transition: color 0.3s;
     cursor: pointer;
-    font-weight: 500; /* 加粗字体 */
+    font-weight: 500;
 }
 
 .button-link:hover, .footer a:hover {
@@ -98,21 +89,6 @@ li {
     margin-bottom: 10px;
 }
 
-/* 响应式设计 */
-@media (max-width: 768px) {
-    .container {
-    width: 95%;
-    padding: 10px;
-	}
-
-	h1 {
-		font-size: 2em;
-	}
-
-	p, .footer {
-		font-size: 0.9em;
-	}
-}
 .footer-bottom {
     width: 100%;
     text-align: center;
@@ -123,4 +99,100 @@ li {
     position: absolute;
     bottom: 0;
     left: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .container {
+        width: 85%;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2.2em;
+    }
+
+    p, .footer {
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        width: 90%;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    p, .footer {
+        font-size: 0.9em;
+    }
+
+    .footer-bottom {
+        position: relative;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    p, .footer {
+        font-size: 0.85em;
+    }
+
+    .footer-bottom {
+        position: relative;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        width: 100%;
+        padding: 5px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    p, .footer {
+        font-size: 0.8em;
+    }
+
+    .footer-bottom {
+        position: relative;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    .container {
+        width: 100%;
+        padding: 5px;
+    }
+
+    h1 {
+        font-size: 1.2em;
+    }
+
+    p, .footer {
+        font-size: 0.75em;
+    }
+
+    .footer-bottom {
+        position: relative;
+        margin-top: 5px;
+    }
 }
