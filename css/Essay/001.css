@@ -1,80 +1,126 @@
-/* 基础样式 */
-html, body {
-    height: 100%;
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to right, #f4f4f4, #cccccc);
+    color: #333;
     margin: 0;
     padding: 0;
+    text-align: center;
     display: flex;
-    justify-content: center; /* 水平居中 */
-    align-items: center; /* 垂直居中 */
-    background: #f4f4f4; /* 背景色 */
-    font-family: 'Lato', 'Arial', sans-serif;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow-y: scroll;
+    }
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
 }
 
 .container {
     width: 90%;
-    max-width: 800px;
+    max-width: 1000px;
+    margin: 0 auto;
     padding: 20px;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    text-align: center; /* 文本居中 */
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin: 20px 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
 }
 
 .footer {
-    padding: 20px;
-    background: white;
-    text-align: center;
+    margin-top: 40px;
+    background: transparent;
     color: #333;
-    width: 100%;
+    text-align: center;
+    padding: 20px 0;
     font-size: 0.8em;
-    margin-top: 20px;
-    border-radius: 12px;
-    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
 }
 
-.footer p {
-    margin: 0;
-}
-
-#time {
-    text-align: center;
-    margin-top: 20px;
-    font-size: 1em;
+/* 链接样式 */
+.button-link {
     color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+    cursor: pointer;
+    font-weight: 500; /* 加粗字体 */
 }
 
-a {
+.button-link:hover, .footer a:hover {
+    color: #e74c3c;
+}
+
+.footer a {
     color: #333;
     text-decoration: none;
     transition: color 0.3s;
 }
 
-a:hover {
-    color: orange;
-    text-decoration: underline;
+.time {
+    margin-top: 20px;
+    font-size: 1.2em;
 }
 
-.button-link {
-    display: inline-block;
-    padding: 10px 20px;
-    margin-top: 15px;
-    border: none;
-    border-radius: 6px;
-    background-image: linear-gradient(to right, #667eea, #764ba2);
-    color: white;
-    font-size: 1em;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+.verification-container {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
 }
 
-.button-link:hover {
-    background-image: linear-gradient(to right, #764ba2, #667eea);
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+.verification-prompt {
+    color: #e74c3c;
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
-.button-link:active {
-    transform: scale(0.95);
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+    width: 95%;
+    padding: 10px;
+	}
+
+	h1 {
+		font-size: 2em;
+	}
+
+	p, .footer {
+		font-size: 0.9em;
+	}
+}
+.footer-bottom {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px 0;
+    background: #f4f4f4;
+    color: #333;
+    position: absolute;
+    bottom: 0;
+    left: 0;
 }
