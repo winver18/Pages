@@ -140,21 +140,23 @@
             document.getElementById('footer').style.display = 'block';
         }
 
-	document.addEventListener("DOMContentLoaded", function () {
-	        // 尝试从 <meta> 标签中获取 Ray ID
-	        const rayIdElement = document.querySelector('meta[name="cf-ray"]');
-	        let rayId = "未知";
-	
-	        if (rayIdElement) {
-	            rayId = rayIdElement.getAttribute("content");
-	        } else {
-	            console.warn("未找到 Ray ID 的 <meta> 标签。");
-	        }
-	
-	        // 将 Ray ID 显示在页脚
-	        const rayIdDisplay = document.getElementById("ray-id");
-	        rayIdDisplay.textContent = `Ray ID：${rayId}`;
-         });
+    // 延迟获取 Ray ID 的函数
+    function getRayId() {
+        const rayIdElement = document.querySelector('meta[name="cf-ray"]');
+        if (rayIdElement) {
+            const rayId = rayIdElement.getAttribute("content");
+            document.getElementById("ray-id").textContent = `Ray ID：${rayId}`;
+        } else {
+            console.warn("未找到 Ray ID 的 <meta> 标签。");
+            document.getElementById("ray-id").textContent = "Ray ID：未知";
+        }
+    }
+
+    // 在页面加载完成后尝试获取 Ray ID
+    document.addEventListener("DOMContentLoaded", function () {
+        // 延迟 1 秒后尝试获取 Ray ID
+        setTimeout(getRayId, 1000);
+    });
 
 	// 定义回调函数，当验证通过时调用
         function javascriptCallback(response) {
