@@ -6,69 +6,33 @@
 	<!-- 爱玩电脑的winver开发的原创个人网页，代码受著作权法保护 -->
 	<body onselectstart="return false">
 	<body ondragstart="return false">
-	<script>
-		//禁止调试代码
-		try {
-			if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-			} else {
-				document.oncontextmenu = function (e) {
-					return false;
-				};
-				document.onkeydown = function (e) {
-					if (e.keyCode === 123) {
-						return false;
-					}
-					else if((e.ctrlKey) && (e.keyCode == 85)){
-						return false;
-					}
-					else if((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)){
-						return false;
-					}
-				};
-				(() => {
-					function block() {
-						setInterval(() => {
-							if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
-								window.location.href='about:blank';
-							}
-							debugger;
-						}, 50);
-					}
-					try {
-						block();
-					} catch (err) {}
-				})();
-				window.oncopy = function() {
-					return false; // 阻止复制操作
-				};
 	
-				(function(){
-					var i = 0;
-					var re = function(){
-						window.location.href='about:blank';
-					};
-					console.log(re);
-					re.toString = function(){
-						window.location.href='about:blank';
-					};
-				})();
-			}
-		} catch(e) {}
-	</script>
-	<link rel="stylesheet" href="/css/Essay/002.css">
+	<link rel="stylesheet" href="/css/Essay.css">
 </head>
 <body>
 	<div class="container">
 	<h1>自我介绍</h1>
 	<h2>我似乎从来没有做过自我介绍</h2>
-	<p>我是爱玩电脑的winver，12周岁，精通Python，C++，HTML，好友爱捡数码垃圾的小张。</p>
-		
+	<p>作者：爱玩电脑的winver <br> 发布时间：2025年2月22日 13点59分</p>
+	<ul>
+		<li>
+			我是爱玩电脑的winver，今年12岁。我平时喜欢玩电脑，学过一些编程语言，像Python、C++和HTML。虽然还没到精通的地步，但能用它们做些简单的小程序和网页，觉得挺有意思。
+		</li>
+		<li>
+			我有个朋友叫爱捡数码垃圾的小张，他喜欢收集别人不要的旧数码设备，比如坏掉的手机和电脑。他觉得这些“数码垃圾”能修好或者改造，挺有意思的。我们俩因为这个成了好朋友，偶尔会一起捣鼓这些玩意儿。
+		</li>
+		<li>
+			虽然我们都还只是小学生，但觉得能做自己喜欢的事，还挺开心的。
+		</li>
+	</ul>
+
 	<div>
 	    <a href="https://space.bilibili.com/1808002444" target="_blank" class="button-link">
 		    <img style="display:inline-block;vertical-align:middle;width:25px;height:25px" alt="哔哩哔哩logo" src="https://www.bilibili.com/favicon.ico">
                     哔哩哔哩个人主页
-	    </a>
+		</a>
 	</div>
+
 	<div>
 		<a href="/Essay" class="button-link">返回上一级</a>
 	</div>
@@ -99,6 +63,26 @@
 		    document.title = '自我介绍 | 爱玩电脑的winver的小破站'; // 最后恢复默认标题
 		}, 3000); // 3秒后恢复默认标题
 	    }
+	});
+	// 获取切换按钮和复选框元素
+	const themeToggle = document.getElementById('theme-toggle');
+
+	// 检查localStorage中是否有用户的主题偏好
+	const savedTheme = localStorage.getItem('theme');
+	if (savedTheme) {
+	document.documentElement.classList.add(savedTheme);
+	themeToggle.checked = savedTheme === 'dark';
+	}
+
+	// 监听复选框的变化，切换主题
+	themeToggle.addEventListener('change', () => {
+	if (themeToggle.checked) {
+		document.documentElement.classList.add('dark');
+		localStorage.setItem('theme', 'dark');
+	} else {
+		document.documentElement.classList.remove('dark');
+		localStorage.setItem('theme', 'light');
+	}
 	});
 	</script>
 </body>
