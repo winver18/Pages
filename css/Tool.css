@@ -113,7 +113,7 @@ p {
 }
 
 input[type="text"] {
-    width: 100%;
+    width: 300px; /* 设置搜索框的宽度 */
     padding: 10px;
     border: 2px solid #ccc;
     border-radius: 5px;
