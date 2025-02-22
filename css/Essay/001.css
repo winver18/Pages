@@ -5,13 +5,12 @@ body {
     color: #333;
     margin: 0;
     padding: 0;
-    text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    overflow-y: scroll;
+    justify-content: flex-start; /* 顶部对齐 */
+    min-height: 100vh; /* 最小高度为视口高度 */
+    overflow-y: auto; /* 允许垂直滚动 */
 }
 
 /* 滚动条样式 */
@@ -28,11 +27,12 @@ body {
 .container {
     width: 90%;
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 20px auto; /* 上下边距为 20px，水平居中 */
     padding: 20px;
     background: #fff;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    text-align: left; /* 文字左对齐 */
 }
 
 /* 标题样式 */
@@ -93,12 +93,13 @@ li {
 .time {
     margin-top: 20px;
     font-size: 1.2em;
+    text-align: left; /* 时间左对齐 */
 }
 
 /* 验证容器样式 */
 .verification-container {
     display: none;
-    text-align: center;
+    text-align: left; /* 验证提示左对齐 */
     margin-top: 20px;
 }
 
@@ -112,20 +113,18 @@ li {
 .footer-bottom {
     width: 100%;
     text-align: center;
-    margin-top: 20px;
     padding: 10px 0;
     background: #f4f4f4;
     color: #333;
-    position: absolute;
-    bottom: 0;
-    left: 0;
+    position: relative; /* 改为相对定位 */
+    margin-top: 40px; /* 增加顶部边距 */
 }
 
 /* 响应式设计 */
 @media (max-width: 768px) {
     .container {
         width: 95%;
-        padding: 10px;
+        padding: 15px;
     }
 
     h1 {
