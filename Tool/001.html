@@ -72,32 +72,35 @@
 </div>
 
 <script>
-    // 用于测试网络速度的函数
     function measure速度() {
-        // 定义测试的URL
-        const testUrl = "https://www.baidu.com";
-    
-        // 获取开始时间
-        const start = Date.now();
-    
-        // 使用Fetch API发起请求
-        fetch(testUrl, { method: "HEAD" }) // 使用HEAD方法减少数据传输量
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`请求失败，状态码：${response.status}`);
+        var url = document.getElementById('testUrl').value; // 从输入框获取URL
+        if (!url) {
+            alert('请输入一个有效的URL');
+            return;
+        }
+
+        var start = new Date(); // 测试开始时间
+        var xhr = new XMLHttpRequest(); // 创建XMLHttpRequest对象
+        xhr.open('GET', url, true); // 打开一个GET请求
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) { // 请求完成
+                if (xhr.status === 200) { // 请求成功
+                    var end = new Date(); // 测试结束时间
+                    var timeDiff = end - start; // 计算时间差
+                    var speed = timeDiff / 1000; // 转换为秒
+                    document.getElementById('速度').innerText = '网络延迟： ' + speed.toFixed(3) + '秒';
+                } else { // 请求失败
+                    document.getElementById('速度').innerText = '测试失败：' + xhr.statusText;
                 }
-                // 获取结束时间
-                const end = Date.now();
-                // 计算延迟时间（单位：毫秒）
-                const latency = end - start;
-                // 显示结果
-                document.getElementById('速度').innerText = `网络延迟：${latency} 毫秒`;
-            })
-            .catch(error => {
-                // 捕获错误并显示
-                console.error("测试失败：", error);
-                document.getElementById('速度').innerText = `测试失败：${error.message}`;
-            });
+            }
+        };
+
+        xhr.onerror = function() {
+            document.getElementById('速度').innerText = '测试失败：网络错误';
+        };
+
+        xhr.send(); // 发送请求
     }
     
     // 监听页面卸载事件
