@@ -54,12 +54,12 @@
     </script>
     <link rel="stylesheet" href="/css/Tool.css">
 </head>
-
+<body>
 <div class="container">
-    <h1>网络速度测试页面</h1>
+    <h1>网络延迟测试页面</h1>
     <input type="text" id="testUrl" class="" placeholder="输入要测试的URL">
-    <input type="button" class="button-link" value="测试延迟" onclick="measure速度()">
-    <p id="速度">网络速度： 未知</p>
+    <input type="button" class="button-link" value="测试延迟" onclick="measure延迟()">
+    <p id="延迟">网络延迟： 未知</p>
     <div class="instructions">
         <strong>使用说明：</strong>
         <ol>
@@ -72,7 +72,7 @@
 </div>
 
 <script>
-    function measure速度() {
+    function measure延迟() {
         var url = document.getElementById('testUrl').value; // 从输入框获取URL
         if (!url) {
             alert('请输入一个有效的URL');
@@ -88,16 +88,15 @@
                 if (xhr.status === 200) { // 请求成功
                     var end = new Date(); // 测试结束时间
                     var timeDiff = end - start; // 计算时间差
-                    var speed = timeDiff / 1000; // 转换为秒
-                    document.getElementById('速度').innerText = '网络延迟： ' + speed.toFixed(3) + '秒';
+                    document.getElementById('延迟').innerText = '网络延迟： ' + timeDiff + ' 毫秒';
                 } else { // 请求失败
-                    document.getElementById('速度').innerText = '测试失败：' + xhr.statusText;
+                    document.getElementById('延迟').innerText = '测试失败：' + xhr.statusText;
                 }
             }
         };
 
         xhr.onerror = function() {
-            document.getElementById('速度').innerText = '测试失败：网络错误';
+            document.getElementById('延迟').innerText = '测试失败：网络错误';
         };
 
         xhr.send(); // 发送请求
@@ -120,6 +119,5 @@
         }
     });
 </script>
-
 </body>
 </html>
