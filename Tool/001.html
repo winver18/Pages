@@ -54,13 +54,12 @@
     </script>
     <link rel="stylesheet" href="/css/Tool.css">
 </head>
-<body onselectstart="return false" ondragstart="return false">
 
 <div class="container">
     <h1>网络速度测试页面</h1>
     <input type="text" id="testUrl" class="" placeholder="输入要测试的URL">
     <input type="button" class="button-link" value="测试延迟" onclick="measure速度()">
-    <p id="速度">网络速度： 0秒</p>
+    <p id="速度">网络速度： 未知</p>
     <div class="instructions">
         <strong>使用说明：</strong>
         <ol>
@@ -74,32 +73,35 @@
 
 <script>
     function measure速度() {
-        var url = document.getElementById('testUrl').value;
-        if (!url) {
-            alert('请输入一个URL。');
-            return;
-        }
-        if (!url.match(/^https?:\/\/.+/)) { // 简单检查是否是 HTTP/HTTPS URL
-            alert('请输入一个有效的 HTTP/HTTPS URL。');
-            return;
-        }
-        var start = new Date(); // 测试开始时间
-        var xhr = new XMLHttpRequest(); // 创建XMLHttpRequest对象
-        xhr.open('GET', url, true); // 打开一个GET请求
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) { // 当请求完成时
-                if (xhr.status === 200) { // 请求成功
-                    var end = new Date(); // 测试结束时间
-                    var timeDiff = end - start; // 计算时间差
-                    document.getElementById('速度').innerText = '网络速度： ' + (timeDiff / 1000).toFixed(3) + '秒';
-                } else { // 请求失败
-                    document.getElementById('速度').innerText = '连接失败：' + xhr.statusText;
-                }
-            }
-        };
-        xhr.send(); // 发送请求
+    var url = document.getElementById('testUrl').value;
+    if (!url) {
+        alert('请输入一个URL。');
+        return;
+    }
+    if (!url.match(/^https?:\/\/.+/)) { // 简单检查是否是 HTTP/HTTPS URL
+        alert('请输入一个有效的 HTTP/HTTPS URL。');
+        return;
     }
 
+    // 使用代理服务器
+    var proxyUrl = `http://localhost:3000/proxy?url=${encodeURIComponent(url)}`;
+    var start = new Date(); // 测试开始时间
+
+    fetch(proxyUrl)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            var end = new Date(); // 测试结束时间
+            var timeDiff = end - start; // 计算时间差
+            document.getElementById('速度').innerText = '网络速度： ' + (timeDiff / 1000).toFixed(3) + '秒';
+        })
+        .catch(error => {
+            console.error("Request failed:", error);
+            document.getElementById('速度').innerText = '连接失败：' + error.message;
+        });
+}
+    
     // 监听页面卸载事件
     window.addEventListener('beforeunload', function () {
         document.title = '(～￣▽￣)～ 欢迎下次光临';
