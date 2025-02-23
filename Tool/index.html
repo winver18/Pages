@@ -69,14 +69,19 @@
             justify-content: center; /* 使输入框和按钮在一行上并居中 */
             align-items: center; /* 垂直居中 */
         }
-        input[type="text"] {
-            width: 300px;
-            padding: 10px;
-            margin-right: 5px; /* 与按钮之间留有间隔 */
-        }
-        input[type="submit"] {
-            padding: 10px 20px;
-        }
+	input[type="text"] {
+	    width: 300px; /* 设置搜索框的宽度 */
+	    padding: 10px;
+	    border: 2px solid #ccc;
+	    border-radius: 5px;
+	    font-size: 16px;
+	    margin-top: 15px;
+	}
+	
+	input[type="text"]:focus {
+	    border-color: #66afe9;
+	    outline: none;
+	}
 </style>
 </head>
 <body>
