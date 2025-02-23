@@ -69,6 +69,31 @@
             justify-content: center; /* 使输入框和按钮在一行上并居中 */
             align-items: center; /* 垂直居中 */
         }
+	.button-link {
+	    display: inline-block;
+	    padding: 10px 20px;
+	    margin-top: 15px; /* 按钮顶部的空间 */
+	    border: none;
+	    border-radius: 6px;
+	    background-image: linear-gradient(to right, #667eea, #764ba2);
+	    color: white;
+	    font-size: 1em;
+	    cursor: pointer;
+	    transition: all 0.3s ease;
+	    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+	    text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+	    text-align: center; /* 按钮文字居中 */
+	}
+	
+	.button-link:hover {
+	    background-image: linear-gradient(to right, #764ba2, #667eea);
+	    transform: scale(1.05);
+	    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+	}
+	
+	.button-link:active {
+	    transform: scale(0.95);
+	}
 	input[type="text"] {
 	    width: 300px; /* 设置搜索框的宽度 */
 	    padding: 10px;
@@ -106,7 +131,7 @@
 			<div class="search-container">
     <form action="https://www.bing.com/search" method="get" target="_blank">
         <input type="text" name="q" placeholder="请输入搜索内容">
-        <input type="submit" value="必应搜索">
+        <input type="submit" class="button-link" value="必应搜索">
     </form>
 </div>
             <li>
