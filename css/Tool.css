@@ -1,8 +1,14 @@
+@font-face {
+    font-family: 'AlimamaFangYuanTiVF'; /* 自定义字体名称 */
+    src: url('/fonts/AlimamaFangYuanTiVF-Thin-2.ttf') format('truetype'); /* 最后加载 ttf 格式 */
+    font-weight: normal; /* 字体粗细 */
+    font-style: normal;  /* 字体样式 */
+}
 body {
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Lato', 'Arial', sans-serif;
+    font-family: 'AlimamaFangYuanTiVF', sans-serif;
     background: #f4f4f4; /* 页面背景色 */
     display: flex;
     flex-direction: column;
