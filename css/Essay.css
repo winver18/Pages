@@ -96,6 +96,7 @@ p {
 }
 
 .button-link {
+    font-family: 'AlimamaFangYuanTiVF', sans-serif;
     display: inline-block;
     padding: 10px 20px;
     margin-top: 15px; /* 按钮顶部的空间 */
@@ -111,6 +112,7 @@ p {
 }
 
 .button-link:hover {
+    font-family: 'AlimamaFangYuanTiVF', sans-serif;
     background-image: linear-gradient(to right, #764ba2, #667eea);
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
