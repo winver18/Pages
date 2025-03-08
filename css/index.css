@@ -1,6 +1,6 @@
 /* 默认样式 */
 @font-face {
-    font-family: 'MyCustomFont';
+    font-family: 'AlimamaFangYuanTiVF';
     src: url('/fonts/AlimamaFangYuanTiVF-Thin.woff2') format('woff2'),
          url('/fonts/AlimamaFangYuanTiVF-Thin.woff') format('woff'),
          url('/fonts/AlimamaFangYuanTiVF-Thin.ttf') format('truetype');
