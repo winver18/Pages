@@ -63,6 +63,7 @@ li {
 }
 
 .button-link {
+    font-family: 'AlimamaFangYuanTiVF', sans-serif;
     color: #333;
     text-decoration: none;
     transition: color 0.3s;
@@ -71,6 +72,7 @@ li {
 }
 
 .button-link:hover, .footer a:hover {
+    font-family: 'AlimamaFangYuanTiVF', sans-serif;
     color: #e74c3c;
 }
 
