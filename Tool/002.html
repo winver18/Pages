@@ -3,58 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>每日一言</title>
-    <body onselectstart="return false">
-    <body ondragstart="return false">
+    <title>随机一言</title>
     <script>
-    //禁止调试代码
-    try {
-      if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-      } else {
-        document.oncontextmenu = function (e) {
-          return false;
-        };
-        document.onkeydown = function (e) {
-          if (e.keyCode === 123) {
-            return false;
-          }
-          else if((e.ctrlKey) && (e.keyCode == 85)){
-            return false;
-          }
-          else if((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)){
-                        return false;
-          }
-        };
-        (() => {
-          function block() {
-            setInterval(() => {
-              if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
-                window.location.href='about:blank';
+        //禁止调试代码
+        try {
+          if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+          } else {
+            document.oncontextmenu = function (e) {
+              return false;
+            };
+            document.onkeydown = function (e) {
+              if (e.keyCode === 123) {
+                return false;
               }
-              debugger;
-            }, 50);
+              else if((e.ctrlKey) && (e.keyCode == 85)){
+                return false;
+              }
+              else if((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)){
+                            return false;
+              }
+            };
+            (() => {
+              function block() {
+                setInterval(() => {
+                  if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
+                    window.location.href='about:blank';
+                  }
+                  debugger;
+                }, 50);
+              }
+              try {
+                block();
+              } catch (err) {}
+            })();
+            window.oncopy = function() {
+              return false; // 阻止复制操作
+            };
+        
+            (function(){
+              var i = 0;
+              var re = function(){
+                window.location.href='about:blank';
+              };
+              console.log(re);
+              re.toString = function(){
+                window.location.href='about:blank';
+              };
+            })();
           }
-          try {
-            block();
-          } catch (err) {}
-        })();
-        window.oncopy = function() {
-          return false; // 阻止复制操作
-        };
-    
-        (function(){
-          var i = 0;
-          var re = function(){
-            window.location.href='about:blank';
-          };
-          console.log(re);
-          re.toString = function(){
-            window.location.href='about:blank';
-          };
-        })();
-      }
-    } catch(e) {}
+        } catch(e) {}
     </script>
+    <style>
+        @font-face {
+            font-family: 'AlimamaFangYuanTiVF';
+            src: url('/fonts/AlimamaFangYuanTiVF-Thin.woff2') format('woff2'),
+                 url('/fonts/AlimamaFangYuanTiVF-Thin.woff') format('woff'),
+                 url('/fonts/AlimamaFangYuanTiVF-Thin.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {
+            font-family: "AlimamaFangYuanTiVF", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000; /* 背景为黑色 */
+            color: #fff; /* 字体为白色 */
+            margin: 0;
+            flex-direction: column;
+        }
+        .quote-container {
+            text-align: center;
+            background: transparent;
+        }
+        .quote {
+            font-size: 2em;
+            margin-bottom: 10px;
+            white-space: pre;
+        }
+        .author {
+            font-size: 1.2em;
+            color: #aaa;
+        }
+        .title {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="quote-container">
