@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>随机一言</title>
+    <body onselectstart="return false">
+    <body ondragstart="return false">
+    <script>
+    //禁止调试代码
+    try {
+      if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+      } else {
+        document.oncontextmenu = function (e) {
+          return false;
+        };
+        document.onkeydown = function (e) {
+          if (e.keyCode === 123) {
+            return false;
+          }
+          else if((e.ctrlKey) && (e.keyCode == 85)){
+            return false;
+          }
+          else if((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)){
+                        return false;
+          }
+        };
+        (() => {
+          function block() {
+            setInterval(() => {
+              if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
+                window.location.href='about:blank';
+              }
+              debugger;
+            }, 50);
+          }
+          try {
+            block();
+          } catch (err) {}
+        })();
+        window.oncopy = function() {
+          return false; // 阻止复制操作
+        };
+    
+        (function(){
+          var i = 0;
+          var re = function(){
+            window.location.href='about:blank';
+          };
+          console.log(re);
+          re.toString = function(){
+            window.location.href='about:blank';
+          };
+        })();
+      }
+    } catch(e) {}
+    </script>
+    <style>
+        body {
+            font-family: "Microsoft YaHei", sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000; /* 背景为黑色 */
+            color: #fff; /* 字体为白色 */
+            margin: 0;
+            flex-direction: column;
+        }
+        .quote-container {
+            text-align: center;
+            background: transparent;
+        }
+        .quote {
+            font-size: 2em;
+            margin-bottom: 10px;
+            white-space: pre;
+        }
+        .author {
+            font-size: 1.2em;
+            color: #aaa;
+        }
+        .title {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quote-container">
+        <div class="quote" id="quote"></div>
+        <div class="author" id="author"></div>
+    </div>
+
+    <script>
+        const quotes = [
+            { quote: "不要等待机会，而要创造机会。", author: "乔治·伯纳德·肖" },
+            { quote: "人生最大的危险在于一个空虚的心。", author: "苏格拉底" },
+            { quote: "人生最大的快乐是致力于一个自己认为伟大的目标。", author: "萧伯纳" },
+            { quote: "人生的价值，并不是用时间，而是用深度去衡量的。", author: "列夫·托尔斯泰" },
+            { quote: "人生最大的错误是不断担心会犯错。", author: "埃尔伯特·哈伯德" }
+        ];
+
+        // 随机选择一条名言
+        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+
+        // 逐字显示名言
+        let quoteText = document.getElementById("quote");
+        let authorText = document.getElementById("author");
+
+        let quoteIndex = 0;
+        let authorIndex = 0;
+
+        function typeQuote() {
+            if (quoteIndex < randomQuote.quote.length) {
+                quoteText.textContent += randomQuote.quote.charAt(quoteIndex);
+                quoteIndex++;
+                setTimeout(typeQuote, 100); // 控制打字速度
+            } else {
+                typeAuthor();
+            }
+        }
+
+        function typeAuthor() {
+            if (authorIndex < randomQuote.author.length) {
+                authorText.textContent += randomQuote.author.charAt(authorIndex);
+                authorIndex++;
+                setTimeout(typeAuthor, 100); // 控制打字速度
+            }
+        }
+
+        typeQuote(); // 开始打字效果
+    </script>
+</body>
+</html>
