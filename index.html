@@ -10,42 +10,53 @@
 	<body onselectstart="return false">
 	<body ondragstart="return false">
 	<script>
-	    try {
-		if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-		    // 移动端不执行以下代码
-		} else {
-		    // 禁止右键菜单
-		    document.oncontextmenu = function (e) {
-			return false;
-		    };
-	
-		    // 禁止快捷键
-		    document.onkeydown = function (e) {
-			if (e.keyCode === 123 || // F12
-			    (e.ctrlKey && e.keyCode == 85) || // Ctrl + U
-			    (e.ctrlKey && e.shiftKey && e.keyCode == 73) // Ctrl + Shift + I
-			) {
-			    return false;
+		//禁止调试代码
+		try {
+			if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+			} else {
+				document.oncontextmenu = function (e) {
+					return false;
+				};
+				document.onkeydown = function (e) {
+					if (e.keyCode === 123) {
+						return false;
+					}
+					else if((e.ctrlKey) && (e.keyCode == 85)){
+						return false;
+					}
+					else if((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)){
+	                			return false;
+					}
+				};
+				(() => {
+					function block() {
+						setInterval(() => {
+							if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
+								window.location.href='about:blank';
+							}
+							debugger;
+						}, 50);
+					}
+					try {
+						block();
+					} catch (err) {}
+				})();
+				window.oncopy = function() {
+					return false; // 阻止复制操作
+				};
+
+				(function(){
+					var i = 0;
+					var re = function(){
+						window.location.href='about:blank';
+					};
+					console.log(re);
+					re.toString = function(){
+						window.location.href='about:blank';
+					};
+				})();
 			}
-		    };
-	
-		    // 检测开发者工具是否打开
-		    (function () {
-			var devtools = function () {};
-			devtools.toString = function () {
-			    window.location.href = 'about:blank'; // 如果检测到开发者工具打开，跳转到空白页面
-			};
-			console.log('%c ', devtools);
-		    })();
-	
-		    // 禁止复制操作
-		    window.oncopy = function () {
-			return false;
-		    };
-		}
-	    } catch (e) {
-		// 捕获异常，避免脚本出错影响页面其他功能
-	    }
+		} catch(e) {}
 	</script>
 <link rel="stylesheet" href="css/index.css">
 </head>
