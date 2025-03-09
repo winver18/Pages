@@ -7,6 +7,7 @@
     font-weight: normal;
     font-style: normal;
 }
+
 body {
     font-family: 'AlimamaFangYuanTiVF', sans-serif;
     background: linear-gradient(to right, #f4f4f4, #cccccc);
@@ -18,8 +19,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh; /* 使用 min-height 替代 height */
-    overflow-y: scroll;
+    min-height: 100vh;
+    overflow-y: auto; /* 使用 auto 替代 scroll */
 }
 
 .container {
@@ -213,5 +214,12 @@ li {
     .footer-bottom {
         position: relative;
         margin-top: 5px;
+    }
+}
+
+/* 在内容未溢出时隐藏滚动条 */
+@media (min-height: 100vh) {
+    body {
+        overflow-y: hidden;
     }
 }
