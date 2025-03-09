@@ -30,25 +30,12 @@
 				};
 				(() => {
 					function block() {
-						    // 检测开发者工具是否打开
-					    (function () {
-					        function detectDevTools() {
-					            const threshold = 160; // 窗口大小差异的阈值
-					            const devToolsOpened = (
-					                window.outerWidth - window.innerWidth > threshold ||
-					                window.outerHeight - window.innerHeight > threshold
-					            );
-					
-					            if (devToolsOpened) {
-					                window.location.href = 'about:blank'; // 跳转到空白页
-					                setInterval(function () {
-					                    debugger; // 不断中断代码执行
-					                }, 100);
-					            }
-					        }
-					
-					        setInterval(detectDevTools, 500); // 每 500ms 检测一次
-					    })();
+						setInterval(() => {
+							if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
+								window.location.href='about:blank';
+							}
+							debugger;
+						}, 50);
 					}
 					try {
 						block();
