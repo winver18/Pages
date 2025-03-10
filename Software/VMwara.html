@@ -1,101 +1,104 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>站外访问警告 | 爱玩电脑的winver的小破站</title>
-<!-- 爱玩电脑的winver开发的原创个人网页，代码受著作权法保护 -->
-<body onselectstart="return false">
-<body ondragstart="return false">
-<script>
-	//禁止调试代码
-	try {
-		if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-		} else {
-			document.oncontextmenu = function (e) {
-				return false;
-			};
-			document.onkeydown = function (e) {
-				if (e.keyCode === 123) {
-					return false;
-				}
-				else if((e.ctrlKey) && (e.keyCode == 85)){
-					return false;
-				}
-				else if((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)){
-					return false;
-				}
-			};
-			(() => {
-				function block() {
-					setInterval(() => {
-						if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
-							window.location.href='about:blank';
-						}
-						debugger;
-					}, 50);
-				}
-				try {
-					block();
-				} catch (err) {}
-			})();
-			window.oncopy = function() {
-				return false; // 阻止复制操作
-			};
+<html lang="zh">
 
-			(function(){
-				var i = 0;
-				var re = function(){
-					window.location.href='about:blank';
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>站外访问警告 | 爱玩电脑的winver的小破站</title>
+	<!-- 爱玩电脑的winver开发的原创个人网页，代码受著作权法保护 -->
+	<body onselectstart="return false">
+	<body ondragstart="return false">
+	<script>
+		//禁止调试代码
+		try {
+			if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+			} else {
+				document.oncontextmenu = function (e) {
+					return false;
 				};
-				console.log(re);
-				re.toString = function(){
-					window.location.href='about:blank';
+				document.onkeydown = function (e) {
+					if (e.keyCode === 123) {
+						return false;
+					}
+					else if ((e.ctrlKey) && (e.keyCode == 85)) {
+						return false;
+					}
+					else if ((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)) {
+						return false;
+					}
 				};
-			})();
-		}
-	} catch(e) {}
-</script>
-<link rel="stylesheet" href="/css/warn.css">
+				(() => {
+					function block() {
+						setInterval(() => {
+							if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
+								window.location.href = 'about:blank';
+							}
+							debugger;
+						}, 50);
+					}
+					try {
+						block();
+					} catch (err) { }
+				})();
+				window.oncopy = function () {
+					return false; // 阻止复制操作
+				};
+
+				(function () {
+					var i = 0;
+					var re = function () {
+						window.location.href = 'about:blank';
+					};
+					console.log(re);
+					re.toString = function () {
+						window.location.href = 'about:blank';
+					};
+				})();
+			}
+		} catch (e) { }
+	</script>
+	<link rel="stylesheet" href="/css/warn.css">
 </head>
+
 <body>
 
-<div class="warning-box">
-  <img src="001.ico" alt="网站LOGO" style="height: 50px; width: 50px; margin-bottom: 20px;">
-  <h2>警告：您即将离开本网站</h2>
-  <p>您正要访问的链接 <a href="#" id="externalSiteUrl" target="_blank" class="button-link button-with-margin">CDS Repository</a> 不属于本网站。请确保您信任该网站，并了解您访问的站点可能与本站有不同的隐私政策。（如果网站是本网站作者推荐的，请放心浏览！不过请注意分辨广告，请务必不要相信广告里任何的内容！）</p>
-  <p>您确定要继续吗？</p>
-  <button class="confirm" onclick="goToExternalSite()">是，我确定</button>
-  <button class="cancel" onclick="goBackToMainSite()">不，我留在本站</button>
-</div>
+	<div class="warning-box">
+		<img src="001.ico" alt="网站LOGO" style="height: 50px; width: 50px; margin-bottom: 20px;">
+		<h2>警告：您即将离开本网站</h2>
+		<p>您正要访问的链接 <a href="#" id="externalSiteUrl" target="_blank" class="button-link button-with-margin">CDS
+				Repository</a>
+			不属于本网站。请确保您信任该网站，并了解您访问的站点可能与本站有不同的隐私政策。（如果网站是本网站作者推荐的，请放心浏览！不过请注意分辨广告，请务必不要相信广告里任何的内容！）</p>
+		<p>您确定要继续吗？</p>
+		<button class="confirm" onclick="goToExternalSite()">是，我确定</button>
+		<button class="cancel" onclick="goBackToMainSite()">不，我留在本站</button>
+	</div>
 
-<script>
-// 定义外部网站的URL变量
-var externalSiteUrl = 'https://softwareupdate.vmware.com/cds/vmw-desktop/ws/';
+	<script>
+		// 定义外部网站的URL变量
+		var externalSiteUrl = 'https://softwareupdate.vmware.com/cds/vmw-desktop/ws/';
 
-// 监听所有a标签的点击事件
-document.addEventListener('click', function(event) {
-  if (event.target.tagName === 'A' && event.target.href) {
-    // 如果点击的是a标签且href属性存在
-    externalSiteUrl = event.target.href; // 更新externalSiteUrl为点击的链接
-    showWarningBox(); // 显示警告框
-    event.preventDefault(); // 阻止默认的链接跳转行为
-  }
-});
+		// 监听所有a标签的点击事件
+		document.addEventListener('click', function (event) {
+			if (event.target.tagName === 'A' && event.target.href) {
+				// 如果点击的是a标签且href属性存在
+				externalSiteUrl = event.target.href; // 更新externalSiteUrl为点击的链接
+				showWarningBox(); // 显示警告框
+				event.preventDefault(); // 阻止默认的链接跳转行为
+			}
+		});
 
-function showWarningBox() {
-  document.querySelector('.warning-box').style.display = 'block'; // 显示警告框
-  document.getElementById('externalLink').href = externalSiteUrl; // 更新警告框中的链接
-}
+		function showWarningBox() {
+			document.querySelector('.warning-box').style.display = 'block'; // 显示警告框
+			document.getElementById('externalLink').href = externalSiteUrl; // 更新警告框中的链接
+		}
 
-function goToExternalSite() {
-  window.location.href = externalSiteUrl;
-}
+		function goToExternalSite() {
+			window.location.href = externalSiteUrl;
+		}
 
-function goBackToMainSite() {
-  window.location.href = '/'; // 重定向回主站
-}
-</script>
-
+		function goBackToMainSite() {
+			window.location.href = '/'; // 重定向回主站
+		}
+	</script>
 </body>
 </html>
