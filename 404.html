@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
-    <meta charset="UTF-8">
-    <title>404 Not Found | 爱玩电脑的winver的小破站</title>
-    <!-- 爱玩电脑的winver开发的原创个人网页，代码受著作权法保护 -->
-    <body onselectstart="return false">
+	<meta charset="UTF-8">
+	<title>404 Not Found | 爱玩电脑的winver的小破站</title>
+	<!-- 爱玩电脑的winver开发的原创个人网页，代码受著作权法保护 -->
+	<body onselectstart="return false">
 	<body ondragstart="return false">
 	<script>
 		//禁止调试代码
 		try {
-			if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+			if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
 			} else {
 				document.oncontextmenu = function (e) {
 					return false;
@@ -18,50 +19,51 @@
 					if (e.keyCode === 123) {
 						return false;
 					}
-					else if((e.ctrlKey) && (e.keyCode == 85)){
+					else if ((e.ctrlKey) && (e.keyCode == 85)) {
 						return false;
 					}
-					else if((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)){
-	                			return false;
+					else if ((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)) {
+						return false;
 					}
 				};
 				(() => {
 					function block() {
 						setInterval(() => {
 							if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
-								window.location.href='about:blank';
+								window.location.href = 'about:blank';
 							}
 							debugger;
 						}, 50);
 					}
 					try {
 						block();
-					} catch (err) {}
+					} catch (err) { }
 				})();
-				window.oncopy = function() {
+				window.oncopy = function () {
 					return false; // 阻止复制操作
 				};
 
-				(function(){
+				(function () {
 					var i = 0;
-					var re = function(){
-						window.location.href='about:blank';
+					var re = function () {
+						window.location.href = 'about:blank';
 					};
 					console.log(re);
-					re.toString = function(){
-						window.location.href='about:blank';
+					re.toString = function () {
+						window.location.href = 'about:blank';
 					};
 				})();
 			}
-		} catch(e) {}
+		} catch (e) { }
 	</script>
 	<link rel="stylesheet" href="/css/404.css">
 </head>
+
 <body>
-    <div class="container">
-        <h1>404</h1>
-        <p>抱歉，您访问的页面不存在。</p>
-        <a href="/"> 返回首页</a>
-    </div>
+	<div class="container">
+		<h1>404</h1>
+		<p>抱歉，您访问的页面不存在。</p>
+		<a href="/"> 返回首页</a>
+	</div>
 </body>
 </html>
