@@ -45,6 +45,7 @@ body, html {
     font-size: 2.5rem; /* 调整标题字体大小 */
     font-weight: bold;
     margin-bottom: 15px;
+    color: rgba(255, 255, 255, 0.9); /* 柔和的白色 */
     animation: slideIn 1.5s ease-in-out;
 }
 
@@ -52,6 +53,7 @@ body, html {
 .description {
     font-size: 1.1rem; /* 调整简介字体大小 */
     margin-bottom: 30px;
+    color: rgba(255, 255, 255, 0.8); /* 柔和的白色 */
     animation: slideIn 2s ease-in-out;
 }
 
@@ -60,7 +62,7 @@ body, html {
     display: inline-block;
     padding: 12px 30px;
     font-size: 1rem; /* 调整按钮字体大小 */
-    color: #fff;
+    color: rgba(255, 255, 255, 0.9); /* 柔和的白色 */
     background-color: rgba(255, 255, 255, 0.1); /* 半透明背景 */
     border: 2px solid rgba(255, 255, 255, 0.5); /* 半透明边框 */
     border-radius: 30px;
@@ -71,8 +73,9 @@ body, html {
 }
 
 .enter-button:hover {
-    background-color: rgba(255, 255, 255, 0.3); /* 悬停时背景更亮 */
+    background-color: rgba(255, 255, 255, 0.2); /* 悬停时背景更亮 */
     border-color: rgba(255, 255, 255, 0.8); /* 悬停时边框更亮 */
+    color: rgba(255, 255, 255, 1); /* 悬停时文字更亮 */
 }
 
 /* 动画效果 */
