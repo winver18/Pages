@@ -1,0 +1,225 @@
+/* 默认样式 */
+@font-face {
+    font-family: 'AlimamaFangYuanTiVF';
+    src: url('/fonts/AlimamaFangYuanTiVF-Thin.woff2') format('woff2'),
+         url('/fonts/AlimamaFangYuanTiVF-Thin.woff') format('woff'),
+         url('/fonts/AlimamaFangYuanTiVF-Thin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'AlimamaFangYuanTiVF', sans-serif;
+    background: linear-gradient(to right, #f4f4f4, #cccccc);
+    color: #333;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-y: auto; /* 使用 auto 替代 scroll */
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+}
+
+p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin: 20px 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+}
+
+.footer {
+    margin-top: 40px;
+    background: transparent;
+    color: #333;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 0.8em;
+    width: 100%;
+}
+
+.button-link {
+    font-family: 'AlimamaFangYuanTiVF', sans-serif;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.button-link:hover, .footer a:hover {
+    font-family: 'AlimamaFangYuanTiVF', sans-serif;
+    color: #e74c3c;
+}
+
+.footer a {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.time {
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+.verification-container {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.verification-prompt {
+    color: #e74c3c;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-bottom {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px 0;
+    background: #f4f4f4;
+    color: #333;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 4px;
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .container {
+        width: 85%;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2.2em;
+    }
+
+    p, .footer {
+        font-size: 0.95em;
+    }
+}
+
+@media (max-width: 992px) {
+    .container {
+        width: 90%;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    p, .footer {
+        font-size: 0.9em;
+    }
+
+    .footer-bottom {
+        position: relative;
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    p, .footer {
+        font-size: 0.85em;
+    }
+
+    .footer-bottom {
+        position: relative;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        width: 100%;
+        padding: 5px;
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    p, .footer {
+        font-size: 0.8em;
+    }
+
+    .footer-bottom {
+        position: relative;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    .container {
+        width: 100%;
+        padding: 5px;
+    }
+
+    h1 {
+        font-size: 1.2em;
+    }
+
+    p, .footer {
+        font-size: 0.75em;
+    }
+
+    .footer-bottom {
+        position: relative;
+        margin-top: 5px;
+    }
+}
+
+/* 在内容未溢出时隐藏滚动条 */
+@media (min-height: 100vh) {
+    body {
+        overflow-y: hidden;
+    }
+}
