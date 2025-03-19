@@ -1,0 +1,87 @@
+/* 基础样式 */
+body,
+html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    color: #fff;
+    height: 100%;
+}
+
+/* 全屏背景 */
+.landing-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://cn.bing.com/th?id=OHR.SunbeamsForest_ZH-CN5358008117_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=h');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+}
+
+/* 内容区域 */
+.content {
+    max-width: 600px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* 半透明背景，确保文字清晰 */
+    border-radius: 10px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* 标题样式 */
+.title {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    animation: slideIn 1.5s ease-in-out;
+}
+
+/* 简介样式 */
+.description {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    animation: slideIn 2s ease-in-out;
+}
+
+/* 进入按钮样式 */
+.enter-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #ff6f61;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: fadeIn 2.5s ease-in-out;
+}
+
+.enter-button:hover {
+    background-color: #ff3b2f;
+    transform: scale(1.1);
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
