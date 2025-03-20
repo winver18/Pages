@@ -9,55 +9,6 @@
 	<!-- 爱玩电脑的winver开发的原创个人网页，代码受著作权法保护 -->
 	<body onselectstart="return false">
 	<body ondragstart="return false">
-	<script>
-		//禁止调试代码
-		try {
-			if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
-			} else {
-				document.oncontextmenu = function (e) {
-					return false;
-				};
-				document.onkeydown = function (e) {
-					if (e.keyCode === 123) {
-						return false;
-					}
-					else if ((e.ctrlKey) && (e.keyCode == 85)) {
-						return false;
-					}
-					else if ((e.ctrlKey) && (e.shiftKey) && (e.keyCode == 73)) {
-						return false;
-					}
-				};
-				(() => {
-					function block() {
-						setInterval(() => {
-							if (window.outerHeight - window.innerHeight > 200 || window.outerWidth - window.innerWidth > 200) {
-								window.location.href = 'about:blank';
-							}
-							debugger;
-						}, 50);
-					}
-					try {
-						block();
-					} catch (err) { }
-				})();
-				window.oncopy = function () {
-					return false; // 阻止复制操作
-				};
-
-				(function () {
-					var i = 0;
-					var re = function () {
-						window.location.href = 'about:blank';
-					};
-					console.log(re);
-					re.toString = function () {
-						window.location.href = 'about:blank';
-					};
-				})();
-			}
-		} catch (e) { }
-	</script>
 	<link rel="stylesheet" href="css/index.css">
 </head>
 
