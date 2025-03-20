@@ -70,7 +70,7 @@
 		<div class="cf-turnstile" data-sitekey="0x4AAAAAAA4jv9zKntatRfzt" data-callback="javascriptCallback">
 		</div>
 		<div class="footer-bottom">
-			<p>Ray ID：91fb303709b752e9</p>
+			<p id="ray-id">Ray ID：91fb303709b752e9</p>
 			<p>性能和安全由Cloudflare提供</p>
 		</div>
 	</div>
@@ -146,6 +146,22 @@
 			document.getElementById('home').style.display = 'block';
 			document.getElementById('footer').style.display = 'block';
 		}
+
+		function generateRayId() {
+			// Ray ID 的前缀
+			const prefix = '91f';
+			// 可用的字符集
+			const chars = 'abcdef0123456789';
+			// 生成剩余的 13 个字符
+			let randomPart = '';
+			for (let i = 0; i < 13; i++) {
+				randomPart += chars[Math.floor(Math.random() * chars.length)];
+			}
+			// 组合前缀和随机部分
+			return prefix + randomPart;
+		}
+		// 页面加载时生成并显示 Ray ID
+		document.getElementById('ray-id').textContent = `Ray ID: ${generateRayId()}`;
 
 
 		// 定义回调函数，当验证通过时调用
