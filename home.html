@@ -69,7 +69,7 @@
 		<div class="cf-turnstile" data-sitekey="0x4AAAAAAA4jv9zKntatRfzt" data-callback="javascriptCallback">
 		</div>
 		<div class="footer-bottom">
-			<p>Ray ID：91fb303709b752e9</p>
+			<p id="ray-id">Ray ID：91fb303709b752e9</p>
 			<p>性能和安全由Cloudflare提供</p>
 		</div>
 	</div>
@@ -144,7 +144,18 @@
 			document.getElementById('footer').style.display = 'block';
 		}
 
-
+		function generateRayId() {
+		    const chars = 'f0123456789';
+		    let rayId = '';
+		    for (let i = 0; i < 16; i++) {
+		        rayId += chars[Math.floor(Math.random() * chars.length)];
+		    }
+		    return rayId;
+		}
+		
+		// 页面加载时生成并显示 Ray ID
+		document.getElementById('ray-id').textContent = `Ray ID: ${generateRayId()}`;
+		
 		// 定义回调函数，当验证通过时调用
 		function javascriptCallback(response) {
 			// 更新验证时间
