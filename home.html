@@ -97,16 +97,18 @@
 
 		function generateRayId() {
 			// Ray ID 的前缀
-			const prefix = '91f';
+			const prefix = '9281d4';
+			// Ray ID 的后缀
+			const suffix = '729a';
 			// 可用的字符集
 			const chars = 'abcdef0123456789';
-			// 生成剩余的 13 个字符
+			// 生成中间的随机部分（假设总长度为 16，前缀 6 + 后缀 4，中间需要 6 个字符）
 			let randomPart = '';
-			for (let i = 0; i < 13; i++) {
-				randomPart += chars[Math.floor(Math.random() * chars.length)];
+			for (let i = 0; i < 6; i++) {
+			randomPart += chars[Math.floor(Math.random() * chars.length)];
 			}
-			// 组合前缀和随机部分
-			return prefix + randomPart;
+			// 组合前缀、随机部分和后缀
+			return prefix + randomPart + suffix;
 		}
 		// 页面加载时生成并显示 Ray ID
 		document.getElementById('ray-id').textContent = `Ray ID: ${generateRayId()}`;
