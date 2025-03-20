@@ -145,12 +145,17 @@
 		}
 
 		function generateRayId() {
+		    // Ray ID 的前缀
+		    const prefix = '91f';
+		    // 可用的字符集
 		    const chars = 'abcdef0123456789';
-		    let rayId = '';
-		    for (let i = 0; i < 16; i++) {
-		        rayId += chars[Math.floor(Math.random() * chars.length)];
+		    // 生成剩余的 13 个字符
+		    let randomPart = '';
+		    for (let i = 0; i < 13; i++) {
+		        randomPart += chars[Math.floor(Math.random() * chars.length)];
 		    }
-		    return rayId;
+		    // 组合前缀和随机部分
+		    return prefix + randomPart;
 		}
 		
 		// 页面加载时生成并显示 Ray ID
